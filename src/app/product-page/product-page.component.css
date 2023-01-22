@@ -9,7 +9,7 @@ background: #FFFFFF;
 box-shadow: 0px 4px 60px rgba(0, 0, 0, 0.07);
 }
 
-#shopingCard{
+#shopping-cart{
     position: absolute;
 width: 486px;
 height: 1000px;
@@ -59,22 +59,6 @@ top: 45px;
 
 background: #F3F9FF;
 border-radius: 10px 10px 0px 0px;
-}
-
-#prodQuant{
-    position: absolute;
-width: 153px;
-height: 14px;
-left: 280px;
-top: 5px;
-
-font-family: 'Helvetica Neue LT GEO';
-font-style: normal;
-font-weight: 700;
-font-size: 12px;
-line-height: 14px;
-
-color: #1B385B;
 }
 
 #prodName{
