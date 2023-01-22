@@ -14,7 +14,8 @@ export class AuthService {
     const loginData:AuthLogin={username:username,password:password}
       this.http.post("https://localhost:7231/Account/login",loginData)
       .subscribe(response=>{
-       if(response!=null){
+       if(response!=null){        
+          localStorage.setItem('token',response.toString());
            this.router.navigate(["product"]);
        }
        else{
