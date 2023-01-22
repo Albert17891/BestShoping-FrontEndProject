@@ -1,7 +1,7 @@
-<form #f="ngForm" (ngSubmit)="onProductAdd(f)">
+<form #f="ngForm" (ngSubmit)="onProductAdd(f)" novalidate>
       <label id="prodName">პროდუქტის სახელი</label>
-      <input id="prodNameInput">
+      <input id="prodNameInput" name="name" ngModel>
       <label id="prodType">პროდუქტის ტიპი</label>
-      <input id="prodTypeInput">
+      <input id="prodTypeInput" name="type" ngModel>
       <button id="button">დამატება</button>
 </form>

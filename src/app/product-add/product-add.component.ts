@@ -12,7 +12,7 @@ import { ProductAddService } from '../product-add.service';
 export class ProductAddComponent {
 
      onProductAdd(f:NgForm){
-         this.addProduct.ProductAdd(f.value.name,f.value.productType);
+         this.addProduct.ProductAdd(f.value.name,f.value.type);
      }
 
    constructor(public addProduct:ProductAddService){}

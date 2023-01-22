@@ -1,4 +1,4 @@
 export interface Product{    
     name:string,    
-    productType:string,    
+    type:string,    
 }
