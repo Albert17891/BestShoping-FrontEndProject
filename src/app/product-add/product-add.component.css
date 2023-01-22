@@ -1,0 +1,56 @@
+#prodName{
+    position: absolute;
+width: 150px;
+height: 17px;
+left: 700px;
+top: 250px;
+
+font-family: 'Helvetica Neue LT GEO';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+}
+#prodNameInput{
+    position: absolute;
+    width: 485px;
+    height: 40px;
+    left: 700px;
+    top: 280px;
+    
+    border: 2px solid #E7F2FD;
+}
+
+#prodType{
+    position: absolute;
+width: 150px;
+height: 17px;
+left: 700px;
+top: 330px;
+
+font-family: 'Helvetica Neue LT GEO';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+}
+#prodTypeInput{
+    position: absolute;
+    width: 485px;
+    height: 40px;
+    left: 700px;
+    top: 370px;
+    
+    border: 2px solid #E7F2FD;
+}
+
+#button{
+    position: absolute;
+    width: 151px;
+    height: 50px;
+    left: 850px;
+    top: 450px;
+    
+    background: #0D66D0;
+    border-radius: 10px;
+}
