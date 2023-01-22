@@ -1,7 +1,15 @@
 <form #f="ngForm" (ngSubmit)="onProductAdd(f)" novalidate>
       <label id="prodName">პროდუქტის სახელი</label>
       <input id="prodNameInput" name="name" ngModel>
+
       <label id="prodType">პროდუქტის ტიპი</label>
       <input id="prodTypeInput" name="type" ngModel>
+
+      <label id="prodQuant">პროდუქტის რაოდენობა</label>
+      <input id="prodQuantInput" name="quantity" ngModel>
+
+      <label id="prodPrice">პროდუქტის ფასი</label>
+      <input id="prodInputPrice" name="price" ngModel>
+
       <button id="button">დამატება</button>
 </form>
