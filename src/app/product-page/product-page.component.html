@@ -1,29 +1,59 @@
-<div id="header">
-    
+<section id="interPage">
+  <div class="wrapper">
+      <div class="itemWrapper">
+          <div class="addItem">
+              <div class="itemTitle">
+                  <p>სახელი</p>
+                  <div>
+                      <p>რაოდენობა</p>
+                      <p> ფასი</p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="items">
+              <div class="itemName">
+                  <p>wdadwda</p>
+              </div>
+
+              <div class="container">
+                  <div></div>
+                  <div></div>
+              </div>
+          </div>
+      </div>
+
+      <div class="Cart">
+          <div class="cartTitle">
+              <h1>ჩემი კალათა</h1>
+          </div>
+
+
+          <div class="parentElement" *ngFor="let product of data,let i=index" >
+            <div class="cartWrapper">
+              <div class="cart_header">
+                  <p>პროდუქტის დასახელება</p>
+                  <p>რაოდენობა</p>
+                  <p>ფასი</p>
+                  <h2>ჯამი</h2>
+              </div>
+              <div class="cart_body">
+                  <p>{{product.name}}</p>
+                  <div>
+                      <button (click)=" decrement()" >-</button>
+                      <p>{{counter}}</p>
+                      <button (click)="increment()">+</button>
+                  </div>
+                  <p>{{product.price}}</p>
+                  <h2>{{product.price*counter}}</h2>                  
+              </div>
+              <button>პროდუქტის დამატება კალათაში</button>
+          </div>
+          </div>
+
+
+      </div>
+
+      <a routerLink="/product-add" class="router">პროდუქტის დამატება ბაზაში</a>
   </div>
-  
-  <div id="shopping-cart">
-    <h1 id="myCard">ჩემი კალათა</h1>
-    <section *ngFor="let product of data">
-      <table id="productAdd">
-        <tr id="nameingBlock">
-          <th id="prodName">პროდუქტის დასახელება</th>
-          <th id="prodName">პროდუქტის რაოდენობა</th>
-          <th id="prodName">ფასი</th>
-          <th id="prodName">ჯამი</th>
-        </tr>
-        <tr>
-          <td>{{ product.name }}</td>
-          <td>{{ product.quantity }}</td>
-          <td>{{ product.price }}</td>
-          <td>{{ product.price * product.quantity }}</td>
-        </tr>
-      </table>
-    </section>
-    <a routerLink="/product-add">Add Product</a>
-  </div>
-  
-  
-  
-  
-  
+</section>

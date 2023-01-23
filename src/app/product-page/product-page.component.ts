@@ -13,7 +13,25 @@ export class ProductPageComponent implements OnInit {
 
   constructor(private productService:ProductAddService){}
   
-  
+  counter=0;
+
+  increment(){  
+   
+    this.data.forEach(x=>{
+      if(x.quantity>=this.counter)
+      this.counter++;
+    })
+   
+  }
+
+  decrement(){
+    if(this.counter>0)
+    this.counter--;
+  }
+
+  addToCard(){
+
+  }
 
   ngOnInit()  {
      this.productService.getProduct()
