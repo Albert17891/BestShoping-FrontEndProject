@@ -1,7 +1,7 @@
 <section id="interPage">
   <div class="wrapper">
       <div class="itemWrapper">
-          <div class="addItem">
+          <div class="addItem" >
               <div class="itemTitle">
                   <p>სახელი</p>
                   <div>
@@ -11,25 +11,28 @@
               </div>
           </div>
 
-          <div class="items">
+          <div class="items" *ngFor="let product of data">
               <div class="itemName">
-                  <p>wdadwda</p>
+                  <p>{{product.name}}</p>
               </div>
 
               <div class="container">
-                  <div></div>
-                  <div></div>
+                  <div>{{product.quantity}}</div>
+                  <div>{{product.price}}</div>                  
+              </div>
+              <div>
+                <button (click)="onAddToCard(product)" >პროდუქტის დამატება კალათაში</button>
               </div>
           </div>
       </div>
-
+<!--   --------------------------------------------------------------------------------------------------------------------->
       <div class="Cart">
           <div class="cartTitle">
               <h1>ჩემი კალათა</h1>
           </div>
 
-
-          <div class="parentElement" *ngFor="let product of data,let i=index" >
+         
+          <div class="parentElement" *ngFor="let product of cardData" >
             <div class="cartWrapper">
               <div class="cart_header">
                   <p>პროდუქტის დასახელება</p>
@@ -40,14 +43,13 @@
               <div class="cart_body">
                   <p>{{product.name}}</p>
                   <div>
-                      <button (click)=" decrement()" >-</button>
-                      <p>{{counter}}</p>
-                      <button (click)="increment()">+</button>
+                    <button (click)=" decrement(product)" >-</button>
+                    <p>{{product.quantity}}</p>
+                    <button (click)="increment(product)">+</button>
                   </div>
                   <p>{{product.price}}</p>
-                  <h2>{{product.price*counter}}</h2>                  
-              </div>
-              <button>პროდუქტის დამატება კალათაში</button>
+                  <h2>{{product.price*product.quantity}}</h2>                  
+              </div>             
           </div>
           </div>
 
@@ -55,5 +57,6 @@
       </div>
 
       <a routerLink="/product-add" class="router">პროდუქტის დამატება ბაზაში</a>
+      <a routerLink="/admin" class="router">Admin Page</a>
   </div>
 </section>

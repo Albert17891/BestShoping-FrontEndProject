@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CardProduct } from '../interfaces/CardProduct';
+import { CardProductUpdate } from '../interfaces/CardProductUpdate';
+import { ProductResponse } from '../interfaces/ProductResponse';
 import { Product } from '../Product';
 import { ProductAddService } from '../product-add.service';
 
@@ -9,34 +12,44 @@ import { ProductAddService } from '../product-add.service';
 })
 export class ProductPageComponent implements OnInit {
   
-  data!: Product[];
+  data!: ProductResponse[];
+  cardData!:CardProductUpdate[];
 
   constructor(private productService:ProductAddService){}
   
-  counter=0;
+  
 
-  increment(){  
-   
-    this.data.forEach(x=>{
-      if(x.quantity>=this.counter)
-      this.counter++;
-    })
-   
+  increment(product:CardProductUpdate){       
+    product.quantity++; 
+    console.log(product.id);
+    this.productService.CardProductUpdateInc(product.id,product.productId,product.name,product.type,product.quantity,product.price)   
+       
   }
 
-  decrement(){
-    if(this.counter>0)
-    this.counter--;
+  decrement(product:CardProductUpdate){
+    if(product.quantity>0)
+    product.quantity--;
+    this.productService.CardProductUpdateDec(product.id,product.productId,product.name,product.type,product.quantity,product.price)  
   }
 
-  addToCard(){
+   onAddToCard(product:ProductResponse){
+         
+         this.productService.CardProductAdd(product.id,product.name,product.type,product.quantity=0,product.price)
+   }
 
-  }
+  
+   products!:Product[]
+        
 
   ngOnInit()  {
      this.productService.getProduct()
           .subscribe(data=>{
             this.data=data;
-          })
+          })         
+
+     this.productService.getCardProduct()
+          .subscribe(data=>{
+            this.cardData=data;
+          })     
   }    
 }

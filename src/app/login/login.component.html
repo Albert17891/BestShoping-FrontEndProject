@@ -9,11 +9,9 @@
     <div id="small-Rectangle2">
         <h1 id="authorization">ავტორიზაცია</h1>
     
-        <div id="elipse4"> 
-              <img src="file://C:\Users\user\Angular\Product-Frontend\src\app\Image\Vector.png">;
-        </div>
-    </div>
-    
+          <div id="elipse">
+                    <img src="../Image/Vector.png" alt="image">
+          </div>
     
      <h1 id="enter-your-info">შეიყვანეთ თქვენი მონაცემები</h1>
 
@@ -21,7 +19,8 @@
           <label id="your-email">მომხმარებლის სახელი</label>
           <input id="email" name="username" ngModel>
           <label id="your-password">პაროლი</label>
-          <input id="password" name="password" ngModel>
+          <input type="password" id="password" name="password" ngModel>
+          <a id="register" routerLink="/register">რეგისტრაცია</a>
           <button id="enter" >შესვლა</button>
     </form>
 </div>

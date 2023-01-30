@@ -1,0 +1,20 @@
+<div id="enter-your-info">
+ <form #f="ngForm" (ngSubmit)="onRegister(f)">
+    <label id="your-username">მომხმარებლის სახელი</label>
+    <input id="username" name="username" ngModel>
+
+    <label id="your-firstname">სახელი</label>
+    <input id="firstname" name="firstname" ngModel>
+
+    <label id="your-lastname">გვარი</label>
+    <input id="lastname" name="lastname" ngModel>
+
+    <label id="your-email">Email</label>    
+    <input id="email" name="email" ngModel>
+
+    <label id="your-password">პაროლი</label>
+    <input type="password" id="password" name="password" ngModel>
+
+    <button id="enter" >რეგისტრაცია</button>
+ </form>
+</div>
