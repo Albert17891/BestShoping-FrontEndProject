@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthLogin } from './authLogin';
+import { LoginResponse } from './interfaces/LoginResponse';
 import { Register } from './interfaces/register';
 
 @Injectable({
@@ -15,9 +17,14 @@ export class AuthService {
     const loginData:AuthLogin={username:username,password:password}    
       this.http.post("https://localhost:7246/Account/login",loginData)
       .subscribe(response=>{
-       if(response!=null){        
-          localStorage.setItem('token',response.toString());
+       if(response!=null){   
+            const loginResponse:LoginResponse=<LoginResponse>response;
+            
+            localStorage.setItem("token",loginResponse.token)           
+            localStorage.setItem("userId",loginResponse.userId)           
+
            this.router.navigate(["product"]);
+          
        }
        else{
         alert("Failed to Login");
@@ -31,8 +38,7 @@ export class AuthService {
     this.http.post("https://localhost:7246/Account/register",registerData)
               .subscribe(response=>{
                 if(response!=null){
-                this.router.navigate(["login"]);
-                localStorage.setItem("userId",response.toString());
+                this.router.navigate(["login"]);               
                 }
                 else{
                   alert("Failed to register")
