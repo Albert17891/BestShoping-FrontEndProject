@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { AuthLogin } from './authLogin';
 import { LoginResponse } from './interfaces/LoginResponse';
 import { Register } from './interfaces/register';
+import jwt_decode from 'jwt-decode';
+import { TokenInfo } from './interfaces/TokenInfo';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +23,21 @@ export class AuthService {
             const loginResponse:LoginResponse=<LoginResponse>response;
             
             localStorage.setItem("token",loginResponse.token)           
-            localStorage.setItem("userId",loginResponse.userId)           
+            localStorage.setItem("userId",loginResponse.userId)        
+            
+            const decodedToken = jwt_decode(loginResponse.token);
+             const tokenInf:TokenInfo=<TokenInfo>decodedToken;
 
-           this.router.navigate(["product"]);
+             localStorage.setItem("role",tokenInf.role)           
+            
+            if(tokenInf.role=='Admin'){
+              this.router.navigate(["admin"])
+            }else if(tokenInf.role=='Manager')
+            {
+              this.router.navigate(['manager'])
+            }else{
+                         this.router.navigate(["product"]);
+            }
           
        }
        else{
@@ -45,4 +59,24 @@ export class AuthService {
                 }
               })  
   }
+
+   LogOut(){
+    
+    this.http.get("https://localhost:7246/Account/logout")
+              .subscribe(response=>{
+                this.router.navigate(["/login"]);
+              });
+              
+   }
+
+   isLoggedIn():boolean{
+
+    var role=localStorage.getItem("role");
+    if(role=='admin')
+    return true;
+    else
+    return false;
+
+   }
+
 }

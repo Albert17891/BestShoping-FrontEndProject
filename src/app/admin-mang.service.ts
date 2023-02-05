@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UpdateRole } from './interfaces/UpdateRole';
 import { User } from './interfaces/User';
+import { Product } from './Product';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,9 @@ export class AdminMangService {
     const updateRole:UpdateRole={email:email}
     this.http.post("https://localhost:7246/Admin/update-role",updateRole)
          .subscribe();
+  }
+
+  getMyProduct():Observable<Product[]>{
+    return this.http.get<Product[]>("https://localhost:7246/Product/get-my-product");
   }
 }

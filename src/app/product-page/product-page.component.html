@@ -21,7 +21,7 @@
                   <div>{{product.price}}</div>                  
               </div>
               <div>
-                <button (click)="onAddToCard(product)" >პროდუქტის დამატება კალათაში</button>
+                <button id="button" (click)="onAddToCard(product)"><img src="./assets/Icon/Card.png"></button>
               </div>
           </div>
       </div>
@@ -50,13 +50,14 @@
                   <p>{{product.price}}</p>
                   <h2>{{product.price*product.quantity}}</h2>                  
               </div>             
+           </div>
+          
           </div>
-          </div>
+         
 
-
-      </div>
-
-      <a routerLink="/product-add" class="router">პროდუქტის დამატება ბაზაში</a>
-      <a routerLink="/admin" class="router">Admin Page</a>
+      </div>          
+     
+      <button pButton type="button"  (click)="onLogOut()" label="გასვლა"></button>
   </div>
 </section>
+

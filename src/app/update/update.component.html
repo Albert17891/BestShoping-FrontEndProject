@@ -1,0 +1,10 @@
+<form *ngIf="selectedRecord" #updateForm="ngForm" (ngSubmit)="updateProduct(updateForm)">
+    
+    <input type="hidden"  [ngModel]="selectedRecord.id">
+    <input type="text" name="name" [ngModel]="selectedRecord.name">
+    <input type="text" name="type" [ngModel]="selectedRecord.type">
+    <input type="text" name="quantity" [ngModel]="selectedRecord.quantity">
+    <input type="text" name="price" [ngModel]="selectedRecord.price">
+
+    <button type="submit">განახლება</button>
+  </form>

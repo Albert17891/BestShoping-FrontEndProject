@@ -1,0 +1,28 @@
+<table>
+    <thead>
+      <tr>
+        <th>სახელი</th>
+        <th>ტიპი</th>
+        <th>რაოდენობა</th>
+        <th>ფასი</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{product.name}}</td>
+        <td>{{product.type}}</td>
+        <td>{{product.quantity}}</td>
+        <td>{{product.price}}</td>        
+        <td>
+          <!-- Update operation -->
+          <button (click)="updateProduct(product)">განახლება</button>
+          <!-- Delete operation -->
+          <button (click)="deleteProduct(product)">წაშლა</button>
+        </td>
+      </tr>
+    </tbody>
+    <a routerLink="/product-add">პროდუქტის დამატება</a>
+    
+  </table>
+
+  
