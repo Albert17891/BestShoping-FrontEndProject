@@ -178,10 +178,17 @@ color: #1B385B;
 }
 
 
-#button{   
-        border: none;
-        background-color: transparent;
-        cursor: pointer;      
+.card-button{   
+      position: absolute;
+      margin-top: -35px;
+      right: 30px;     
+           
+}
+
+#button{
+    border:none;
+        background-color: transparent;     
+        cursor: pointer;   
 }
 
 

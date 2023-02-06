@@ -49,17 +49,21 @@ export class ProductPageComponent implements OnInit {
   
    products!:Product[]
         
+    loadData(){
 
+    }
+    
   ngOnInit()  {
      this.productService.getProduct()
           .subscribe(data=>{
             this.data=data;
+            console.log(this.data)
           })         
 
      this.productService.getCardProduct()
           .subscribe(data=>{
             this.cardData=data;
-            console.log(this.cardData)
+           
           })     
   }    
 }

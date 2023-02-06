@@ -72,7 +72,7 @@ export class AuthService {
    isLoggedIn():boolean{
 
     var role=localStorage.getItem("role");
-    if(role=='admin')
+    if(role=='Admin')
     return true;
     else
     return false;

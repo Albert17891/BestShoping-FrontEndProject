@@ -43,3 +43,21 @@ table {
     background-color: #333;
     color: #fff;
   }
+
+  a[routerLink="/product-add"] {
+    color: rgb(220, 14, 14);
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+  }
+  
+  a[routerLink="/product-add"]:hover {
+    color: #555;
+    cursor: pointer;
+  }
+
+  #logout{
+    position: absolute;
+    right: 5%;
+    top: 0px;
+  }

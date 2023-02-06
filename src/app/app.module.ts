@@ -15,6 +15,8 @@ import * as jwt_decode from 'jwt-decode';
 import { ManagerComponent } from './manager/manager.component';
 import { UpdateComponent } from './update/update.component';
 import {ButtonModule} from 'primeng/button';
+import {TableModule} from 'primeng/table';
+import {PaginatorModule} from 'primeng/paginator';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import {ButtonModule} from 'primeng/button';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ButtonModule
+    ButtonModule,
+    TableModule,
+    PaginatorModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,useClass:AuthIntercepter,multi:true

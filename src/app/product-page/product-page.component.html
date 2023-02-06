@@ -1,30 +1,29 @@
 <section id="interPage">
   <div class="wrapper">
-      <div class="itemWrapper">
-          <div class="addItem" >
-              <div class="itemTitle">
-                  <p>სახელი</p>
-                  <div>
-                      <p>რაოდენობა</p>
-                      <p> ფასი</p>
-                  </div>
-              </div>
-          </div>
-
-          <div class="items" *ngFor="let product of data">
-              <div class="itemName">
-                  <p>{{product.name}}</p>
-              </div>
-
-              <div class="container">
-                  <div>{{product.quantity}}</div>
-                  <div>{{product.price}}</div>                  
-              </div>
-              <div>
+    <div>
+     <p-table [value]="data" styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '120rem'}" 
+     [paginator]="true"
+      [rows]="2">       
+        <ng-template pTemplate="header">
+            <tr>              
+                <th>სახელი</th>               
+                <th>რაოდენობა</th>
+                <th>ფასი</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>                
+                <td>{{product.name}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.price}}</td>
+            </tr>
+            <div class="card-button">
                 <button id="button" (click)="onAddToCard(product)"><img src="./assets/Icon/Card.png"></button>
               </div>
-          </div>
-      </div>
+        </ng-template>
+       
+     </p-table>
+   </div>
 <!--   --------------------------------------------------------------------------------------------------------------------->
       <div class="Cart">
           <div class="cartTitle">
