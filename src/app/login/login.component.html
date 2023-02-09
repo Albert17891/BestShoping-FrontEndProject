@@ -17,7 +17,8 @@
 
     <form #f="ngForm" (ngSubmit)="onLogin(f)" novalidate >
           <label id="your-email">მომხმარებლის სახელი</label>
-          <input id="email" name="username" ngModel>
+          <input id="email" name="username" ngModel >
+         
           <label id="your-password">პაროლი</label>
           <input type="password" id="password" name="password" ngModel>
           <a id="register" routerLink="/register">რეგისტრაცია</a>
