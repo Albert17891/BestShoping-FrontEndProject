@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminMangService } from '../admin-mang.service';
+import { Router } from '@angular/router';
+import { AdminMangService } from '../admin-manager.service';
 import { User } from '../interfaces/User';
 
 @Component({
@@ -7,24 +8,15 @@ import { User } from '../interfaces/User';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent  {  
+  
+  constructor(public router:Router){}
 
-  users!:User[];
-
-  constructor(public adminManager:AdminMangService){}
-
-  onSelectionChange(email:string){
-          this.adminManager.UpdateRoles(email);
+  UserManagement(){
+    this.router.navigate(["/user-management"])
   }
 
-  ngOnInit() {
-    this.adminManager.getUsers()
-                .subscribe(data=>{
-                  this.users=data      
-                  console.log(data)  ;                            
-                })
+  ProductManagement(){
+    this.router.navigate(["/product-management"])
   }
-
-  
-  
 }

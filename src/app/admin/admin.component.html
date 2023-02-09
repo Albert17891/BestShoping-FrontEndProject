@@ -1,14 +1,5 @@
-<table>
-    <tr>
-      <th>არჩევა</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-    </tr>
-    <tr *ngFor="let user of users">
-      <td><input type="radio" name="selectedUser" [value]="user.email" (change)="onSelectionChange(user.email)"></td>
-      <td>{{user.firstName}}</td>
-      <td>{{user.lastName}}</td>
-      <td>{{user.email}}</td>
-    </tr>
-  </table>
+<div id="Admin">
+  <h1 >Admin Page</h1>
+  <button (click)="UserManagement()">UserManagement</button>
+  <button (click)="ProductManagement()">ProductManagement</button>
+</div>
