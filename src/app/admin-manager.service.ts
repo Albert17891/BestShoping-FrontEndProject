@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { DeleteUser } from './interfaces/DeleteUser';
 import { UpdateRole } from './interfaces/UpdateRole';
 import { User } from './interfaces/User';
 import { Product } from './Product';
@@ -10,7 +12,10 @@ import { Product } from './Product';
 })
 export class AdminMangService {
 
-  constructor(public http:HttpClient) { }
+  constructor(public http:HttpClient,public router:Router) { }
+
+  user!:User;
+
 
   getUsers():Observable<User[]>{
     return this.http.get<User[]>("https://localhost:7246/Admin");
@@ -25,4 +30,19 @@ export class AdminMangService {
   getMyProduct():Observable<Product[]>{
     return this.http.get<Product[]>("https://localhost:7246/Product/get-my-product");
   }
+
+  UpdateUser(user:User){
+    this.http.post("https://localhost:7246/Admin/update-user",user)
+    .subscribe();
+
+    this.router.navigate(["/admin"])
+  }
+
+  DeleteUser(email:string){
+     const deleteUser:DeleteUser={email:email}
+    this.http.post("https://localhost:7246/Admin/delete-user",deleteUser)
+    .subscribe();
+  }
+
+  
 }
