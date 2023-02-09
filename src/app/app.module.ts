@@ -17,6 +17,9 @@ import { UpdateComponent } from './update/update.component';
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
 import {PaginatorModule} from 'primeng/paginator';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { UserManagementComponent } from './user-management/user-management.component';
+import { ProductManagementComponent } from './product-management/product-management.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import {PaginatorModule} from 'primeng/paginator';
     RegisterComponent,
     AdminComponent,
     ManagerComponent,
-    UpdateComponent
+    UpdateComponent,
+    UpdateUserComponent,
+    UserManagementComponent,
+    ProductManagementComponent
   ],
   imports: [
     BrowserModule,
