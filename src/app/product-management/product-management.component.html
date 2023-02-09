@@ -1,0 +1,33 @@
+<h1 style="text-align: center;">ProductManagement</h1>
+
+<div>
+    <p-table [value]="data" styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '90rem'}" 
+    [paginator]="true"
+     [rows]="5">       
+       <ng-template pTemplate="header">
+           <tr>              
+               <th>პროდუქტის სახელი</th>               
+               <th>რაოდენობა</th>
+               <th>ფასი</th>
+               <th>გამყიდველის სახელი</th>
+               <th>გამყიდველის ემაილი</th>
+           </tr>
+       </ng-template>
+       <ng-template pTemplate="body" let-productWithOwner>
+           <tr>                
+               <td>{{productWithOwner.name}}</td>
+               <td>{{productWithOwner.quantity}}</td>
+               <td>{{productWithOwner.price}}</td>
+               <td>{{productWithOwner.firstName}}</td>
+               <td>{{productWithOwner.email}}</td>  
+               <td>
+               
+                <!-- Delete operation -->
+                <button (click)="deleteProduct(productWithOwner.productId)">წაშლა</button>
+              </td>             
+           </tr>
+          
+       </ng-template>
+      
+    </p-table>
+  </div>
