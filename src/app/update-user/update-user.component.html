@@ -1,0 +1,8 @@
+<form *ngIf="selectedRecord" #updateForm="ngForm" (ngSubmit)="UpdateUser(updateForm)">  
+
+    <input type="text" name="firstName" [ngModel]="selectedRecord.firstName">
+    <input type="text" name="lastName" [ngModel]="selectedRecord.lastName">
+    <input type="text" name="email" [ngModel]="selectedRecord.email">    
+
+    <button type="submit">განახლება</button>
+  </form>
