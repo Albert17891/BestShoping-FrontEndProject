@@ -3,8 +3,10 @@ import { AuthService } from '../auth.service';
 import { CardProduct } from '../interfaces/CardProduct';
 import { CardProductUpdate } from '../interfaces/CardProductUpdate';
 import { ProductResponse } from '../interfaces/ProductResponse';
+import { VaucerForUser } from '../interfaces/Vaucer/VaucerForUser';
 import { Product } from '../Product';
 import { ProductAddService } from '../product-add.service';
+import { VaucerService } from '../service/vaucer-service';
 
 
 @Component({
@@ -16,14 +18,15 @@ export class ProductPageComponent implements OnInit {
   
   data!: ProductResponse[];
   cardData!:CardProductUpdate[];
+  vaucers!:VaucerForUser[];
 
-  constructor(private productService:ProductAddService,private authService:AuthService){}
+  constructor(private productService:ProductAddService,private authService:AuthService,
+    private vaucerService:VaucerService){}
   
   
 
   increment(product:CardProductUpdate){       
-    product.quantity++; 
-    console.log(product.id);
+    product.quantity++;     
     this.productService.CardProductUpdateInc(product.id,product.productId,product.name,product.type,product.quantity,product.price)   
     
   }
@@ -49,9 +52,9 @@ export class ProductPageComponent implements OnInit {
   
    products!:Product[]
         
-    loadData(){
-
-    }
+   getVaucerName(name:string){
+        alert(name)
+   }
     
   ngOnInit()  {
      this.productService.getProduct()
@@ -64,6 +67,14 @@ export class ProductPageComponent implements OnInit {
           .subscribe(data=>{
             this.cardData=data;
            
-          })     
+          })  
+          
+          var userId=localStorage.getItem("userId");
+
+       this.vaucerService.GetVaucerForUser(userId!)
+            .subscribe(vaucer=>{
+              this.vaucers=vaucer;
+              console.log(vaucer)
+            })   
   }    
 }

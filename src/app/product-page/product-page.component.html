@@ -1,7 +1,7 @@
 <section id="interPage">
   <div class="wrapper">
     <div>
-     <p-table [value]="data" styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '90rem'}" 
+     <p-table [value]="data" styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '100rem'}" 
      [paginator]="true"
       [rows]="3">       
         <ng-template pTemplate="header">
@@ -19,6 +19,9 @@
             </tr>
             <div class="card-button">
                 <button id="button" (click)="onAddToCard(product)"><img src="./assets/Icon/Card.png"></button>
+              </div>
+              <div class="vaucer" *ngFor="let vaucer of vaucers">
+                <button id="vaucerButton" (click)="getVaucerName(vaucer.vaucerName)" *ngIf="product.id==vaucer.productId">ვაუჩერის აღება</button>
               </div>
         </ng-template>
        

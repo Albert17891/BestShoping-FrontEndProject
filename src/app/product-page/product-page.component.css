@@ -185,6 +185,12 @@ color: #1B385B;
            
 }
 
+.vaucer{
+    position: absolute;
+    margin-top: -35px;
+    right: 100px; 
+}
+
 #button{
       border:none;
         background-color: transparent;     
@@ -192,5 +198,9 @@ color: #1B385B;
 }
 
 
-
+#vaucerButton{
+    cursor: pointer;
+    background-color: rgb(235, 39, 39);
+    padding: 4px;
+}
 
