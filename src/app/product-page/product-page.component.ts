@@ -3,9 +3,13 @@ import { AuthService } from '../auth.service';
 import { CardProduct } from '../interfaces/CardProduct';
 import { CardProductUpdate } from '../interfaces/CardProductUpdate';
 import { ProductResponse } from '../interfaces/ProductResponse';
+import { BuyProductInfoRequest} from '../interfaces/UserAccount/BuyProductInfoRequest';
+import { BuyProductRequest } from '../interfaces/UserAccount/BuyProductRequest';
+import { UserAccountResponse } from '../interfaces/UserAccount/UserAccountResponse';
 import { VaucerForUser } from '../interfaces/Vaucer/VaucerForUser';
 import { Product } from '../Product';
 import { ProductAddService } from '../product-add.service';
+import { UserAccountService } from '../service/user-account.service';
 import { VaucerService } from '../service/vaucer-service';
 
 
@@ -19,9 +23,10 @@ export class ProductPageComponent implements OnInit {
   data!: ProductResponse[];
   cardData!:CardProductUpdate[];
   vaucers!:VaucerForUser[];
+  account!:UserAccountResponse;
 
   constructor(private productService:ProductAddService,private authService:AuthService,
-    private vaucerService:VaucerService){}
+    private vaucerService:VaucerService,private userAccountService:UserAccountService){}
   
   
 
@@ -55,6 +60,38 @@ export class ProductPageComponent implements OnInit {
    getVaucerName(name:string){
         alert(name)
    }
+
+// Buy function
+   buy(){
+      
+     var cardQuantity=0;
+     var buyProducts:BuyProductInfoRequest[]=[];
+
+    this.cardData.forEach(element => {
+        cardQuantity+=element.quantity;
+
+       var buyProduct:BuyProductInfoRequest={productId:element.productId,price:element.price}
+         
+        buyProducts.push(buyProduct)
+      });
+
+      if(cardQuantity>this.account.amount){
+        alert("თქვენ ანგარიშზე არ არის საკმარისი თანხა")
+      }
+      else{
+        var userId=localStorage.getItem("userId");
+        const purchase:BuyProductRequest={userId:userId!,buyProducts:buyProducts}
+        this.userAccountService.buy(purchase);
+        
+      }
+
+   }
+   
+   vaucerName!:string;
+
+   getVaucer(){
+      
+   }
     
   ngOnInit()  {
      this.productService.getProduct()
@@ -76,5 +113,11 @@ export class ProductPageComponent implements OnInit {
               this.vaucers=vaucer;
               console.log(vaucer)
             })   
+      
+      this.userAccountService.GetUserAccount(userId!)
+                             .subscribe(account=>{
+                              this.account=account;
+                             })
+
   }    
 }

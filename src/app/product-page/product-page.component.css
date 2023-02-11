@@ -204,3 +204,37 @@ color: #1B385B;
     padding: 4px;
 }
 
+.buy{
+   position: relative;
+    top:10px;
+    cursor: pointer;
+    padding: 20px;
+    background-color: rgb(131, 131, 208);
+    font-size: large;
+    left: 250px;
+}
+
+.vaucerUse{
+    position: absolute;
+    top: 100px;
+    right: 200px;
+}
+
+#vaucerInput{
+    position: absolute;
+    width: 385px;
+    height: 40px;
+    border: 2px solid #E7F2FD;
+    top:30px;
+    left: -250px;
+}
+
+#vaucerUseButton{
+    position: absolute;
+    cursor: pointer;
+    padding: 20px;
+    top: 100px;
+    right: 10px;
+   background-color: rgb(202, 87, 87);
+   font-size: large;
+}

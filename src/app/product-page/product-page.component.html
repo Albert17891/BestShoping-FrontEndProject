@@ -53,12 +53,17 @@
                   <h2>{{product.price*product.quantity}}</h2>                  
               </div>             
            </div>
-          
+                 
           </div>
-         
+          <button class="buy" (click)="buy()">შეძენა</button>
 
       </div>          
-     
+     <h3>ჩემი ანგარიში {{account.amount}}</h3>
+       <div class="vaucerUse">
+        <button id="vaucerUseButton" (click)="getVaucer()">ვაუჩერის გამოყენება</button>
+        <input id="vaucerInput" name="vaucerName" [(ngModel)]="vaucerName">
+       </div>
+    
       <button pButton type="button"  (click)="onLogOut()" label="გასვლა"></button>
   </div>
 </section>
