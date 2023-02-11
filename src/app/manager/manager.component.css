@@ -61,3 +61,10 @@ table {
     right: 5%;
     top: 0px;
   }
+
+  button{
+    cursor: pointer;
+    margin: 5px;
+    background-color: red;
+    padding: 5px;
+  }

@@ -19,7 +19,7 @@ export class UpdateUserComponent implements OnInit{
   }
 
    UpdateUser(form:NgForm){
-          const user:User={firstName:form.value.firstName,lastName:form.value.lastName,email:form.value.email,role:""}   
+          const user:User={id:"",firstName:form.value.firstName,lastName:form.value.lastName,email:form.value.email,role:""}   
           this.adminService.UpdateUser(user);
    }
 }

@@ -20,7 +20,10 @@ import {PaginatorModule} from 'primeng/paginator';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { ProductManagementComponent } from './product-management/product-management.component';
-
+import { ProductReportComponent } from './product-report/product-report.component';
+import { VaucerComponent } from './vaucer/vaucer.component';
+import {DropdownModule} from 'primeng/dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,9 @@ import { ProductManagementComponent } from './product-management/product-managem
     UpdateComponent,
     UpdateUserComponent,
     UserManagementComponent,
-    ProductManagementComponent
+    ProductManagementComponent,
+    ProductReportComponent,
+    VaucerComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,9 @@ import { ProductManagementComponent } from './product-management/product-managem
     HttpClientModule,
     ButtonModule,
     TableModule,
-    PaginatorModule
+    PaginatorModule,
+    DropdownModule,
+    BrowserAnimationsModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,useClass:AuthIntercepter,multi:true

@@ -1,7 +1,7 @@
 import { HttpClient,HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { CardProduct } from './interfaces/CardProduct';
 import { CardProductUpdate } from './interfaces/CardProductUpdate';
 import { ProductResponse } from './interfaces/ProductResponse';
@@ -21,6 +21,7 @@ export class ProductAddService  {
 
         const product:Product={ownerUserId:ownerUserId,name:name,type:type,quantity:quantity,price:price}        
        this.http.post("https://localhost:7246/Product/product-add",product)
+             .pipe()
             .subscribe(response=>{
                  if(response !=null){
                   this.route.navigate(["/manager"])
@@ -32,6 +33,7 @@ export class ProductAddService  {
        
     const product:CardProduct={userId:localStorage.getItem("userId"),productId:productId,name:name,type:type,quantity:quantity,price:price}        
     this.http.post("https://localhost:7246/Card/add-card-products",product)
+          .pipe()
          .subscribe(response=>{             
          })  ;
   }
@@ -39,6 +41,7 @@ export class ProductAddService  {
   CardProductUpdateInc(id:number,productId:number,name:string,type:string,quantity:number,price:number){
     const product:CardProductUpdate={id:id,userId:localStorage.getItem("userId"),productId:productId,name:name,type:type,quantity:quantity,price:price}        
     this.http.post("https://localhost:7246/Card/inc-update-card-products",product)
+         .pipe()
          .subscribe(response=>{             
          })  ;
   }
@@ -46,6 +49,7 @@ export class ProductAddService  {
   CardProductUpdateDec(id:number,productId:number,name:string,type:string,quantity:number,price:number){
     const product:CardProductUpdate={id:id,userId:localStorage.getItem("userId"),productId:productId,name:name,type:type,quantity:quantity,price:price}        
     this.http.post("https://localhost:7246/Card/dec-update-card-products",product)
+          .pipe()
          .subscribe(response=>{             
          })  ;
   }

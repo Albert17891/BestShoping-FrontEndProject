@@ -27,9 +27,15 @@ export class UserManagementComponent implements OnInit {
    deleteUser(email:string){
       this.adminManager.DeleteUser(email);
    }
+     
+   Vaucer(id:string){
+    console.log(id);
+    localStorage.setItem("id",id);
+    this.router.navigate(["vaucer"]);
+    
+  }
 
-
-  ngOnInit() {
+  ngOnInit() {    
     this.adminManager.getUsers()
                 .subscribe(data=>{
                   this.users=data    

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { DeleteUser } from './interfaces/DeleteUser';
 import { UpdateRole } from './interfaces/UpdateRole';
 import { User } from './interfaces/User';
@@ -33,9 +33,10 @@ export class AdminMangService {
 
   UpdateUser(user:User){
     this.http.post("https://localhost:7246/Admin/update-user",user)
+    .pipe(map((res) => {
+      this.router.navigate(["/user-management"]);
+    }))
     .subscribe();
-
-    this.router.navigate(["/admin"])
   }
 
   DeleteUser(email:string){
