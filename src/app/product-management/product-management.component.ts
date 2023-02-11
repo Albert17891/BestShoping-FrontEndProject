@@ -1,5 +1,6 @@
 import { getLocaleDateFormat } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductWithOwner } from '../interfaces/ProductManagement/ProductWithOwner';
 import { ProductManagementService } from '../product-management.service';
 
@@ -12,8 +13,12 @@ export class ProductManagementComponent implements OnInit {
 
    data!:ProductWithOwner[];
 
-   constructor(public productManagement:ProductManagementService){}
+   constructor(public productManagement:ProductManagementService,public router:Router){}
 
+
+   goReport(){
+       this.router.navigate(["product-report"]);
+   }
 
    deleteProduct(id:number){       
         this.productManagement.DeleteProduct(id);

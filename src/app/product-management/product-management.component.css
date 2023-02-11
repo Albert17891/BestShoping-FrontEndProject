@@ -2,3 +2,12 @@ button{
     cursor: pointer;
     background-color: red;
 }
+
+#report{
+    padding: 10px;
+   
+   
+    cursor: pointer;
+    background-color:greenyellow;
+    left: 30%;
+}
