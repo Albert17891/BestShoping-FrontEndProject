@@ -1,0 +1,29 @@
+<div>
+    <form #f="ngForm" (ngSubmit)="CreateVaucer(f)" >
+        
+          <label id="expireLabel">ვაუჩერის ვადა</label>
+          <input id="expireInput" type="datetime-local" name="expireTime" ngModel>
+          <label id="priceLabel">ფასი</label>
+          <input id="priceInput" name="price" ngModel>
+          <button id="button">დამატება</button>
+    </form>
+    <h2 >პროდუქტების სია</h2>
+    <p-dropdown id="drop" [options]="products" [(ngModel)]="selectedProduct" optionLabel="name"></p-dropdown>
+</div>
+
+<div class="vaucer">
+    <table>
+        <tr>
+            <th>ვაუჩერის ვადა</th>
+            <th>ვის ეკუთვნის</th>
+            <th>პროდუქტის სახელი</th>            
+        </tr>
+        <tr *ngFor="let vaucer of vaucers">
+            <td>{{vaucer.expireTime}}</td>
+            <td>{{vaucer.userName}}</td>
+            <td>{{vaucer.productName}}</td>
+            <button (click)="deleteVaucer(vaucer.id)">წაშლა</button>
+        </tr>
+    </table>
+</div>
+
