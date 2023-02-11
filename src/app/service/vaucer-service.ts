@@ -34,7 +34,13 @@ export class VaucerService {
      const params=new HttpParams()
      .set("userId",id);
 
-       return this.http.get<VaucerForUser[]>("https://localhost:7246/Vaucer/get-user-vaucer",{params});
-  }             
+       return this.http.get<VaucerForUser[]>("https://localhost:7246/User/get-user-vaucer",{params});
+  }    
+  
+  UseVaucer(vaucerName:string){
+    var params=new HttpParams()
+       .set("vaucerName",vaucerName);
+    this.http.get("https://localhost:7246/Vaucer/use-vaucer",{params});
+  }
 
 }
