@@ -19,4 +19,6 @@ export class AdminComponent  {
   ProductManagement(){
     this.router.navigate(["/product-management"])
   }
+
+  
 }
