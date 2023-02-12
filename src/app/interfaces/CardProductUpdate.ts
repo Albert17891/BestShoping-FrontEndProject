@@ -4,7 +4,7 @@ export interface CardProductUpdate{
     productId:number
     name:string,    
     type:string,
-    quantity:number
-    price:number  
-  
+    quantity:number,
+    price:number,
+    sumPrice:number,
 }

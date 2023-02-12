@@ -1,5 +1,5 @@
 export interface TopProduct{
     name:string;
-    type:string;
-    
+    price:number;
+    sumQuantity:number;
 }

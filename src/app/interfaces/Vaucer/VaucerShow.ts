@@ -3,4 +3,5 @@ export interface VaucerShow{
     expireTime:Date,
     userName:string,
     productName:string,
+    isUsed:string,
 }

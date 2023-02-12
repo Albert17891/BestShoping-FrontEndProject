@@ -1,4 +1,5 @@
 export interface BuyProductInfoRequest{
-    productId:number,
+    id:number
+    productId:number,    
     price:number,
 }
