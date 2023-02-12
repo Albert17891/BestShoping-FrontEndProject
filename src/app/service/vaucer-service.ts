@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 import { DeleteVaucerRequest } from '../interfaces/Vaucer/DeleteVaucerRequest';
 import { VaucerForUser } from '../interfaces/Vaucer/VaucerForUser';
 import { VaucerModel } from '../interfaces/Vaucer/VaucerModel';
+import { UseVaucerRequest } from '../interfaces/Vaucer/UseVaucerRequest';
 import { VaucerShow } from '../interfaces/Vaucer/VaucerShow';
+import { VaucerUserResponse } from '../interfaces/Vaucer/VaucerUserResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -37,10 +39,9 @@ export class VaucerService {
        return this.http.get<VaucerForUser[]>("https://localhost:7246/User/get-user-vaucer",{params});
   }    
   
-  UseVaucer(vaucerName:string){
-    var params=new HttpParams()
-       .set("vaucerName",vaucerName);
-    this.http.get("https://localhost:7246/Vaucer/use-vaucer",{params});
+  UseVaucer(vaucerRequest:UseVaucerRequest):Observable<VaucerUserResponse>{
+   
+     return this.http.post<VaucerUserResponse>("https://localhost:7246/User/use-vaucer",vaucerRequest);
   }
 
 }
