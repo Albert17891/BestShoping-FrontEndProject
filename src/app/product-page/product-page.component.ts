@@ -7,10 +7,12 @@ import { BuyProductInfoRequest} from '../interfaces/UserAccount/BuyProductInfoRe
 import { BuyProductRequest } from '../interfaces/UserAccount/BuyProductRequest';
 import { UserAccountResponse } from '../interfaces/UserAccount/UserAccountResponse';
 import { VaucerForUser } from '../interfaces/Vaucer/VaucerForUser';
+import { UseVaucerRequest } from '../interfaces/Vaucer/UseVaucerRequest';
 import { Product } from '../Product';
 import { ProductAddService } from '../product-add.service';
 import { UserAccountService } from '../service/user-account.service';
 import { VaucerService } from '../service/vaucer-service';
+import { VaucerUserResponse } from '../interfaces/Vaucer/VaucerUserResponse';
 
 
 @Component({
@@ -23,7 +25,7 @@ export class ProductPageComponent implements OnInit {
   data!: ProductResponse[];
   cardData!:CardProductUpdate[];
   vaucers!:VaucerForUser[];
-  account!:UserAccountResponse;
+  amount!:number;
 
   constructor(private productService:ProductAddService,private authService:AuthService,
     private vaucerService:VaucerService,private userAccountService:UserAccountService){}
@@ -32,14 +34,20 @@ export class ProductPageComponent implements OnInit {
 
   increment(product:CardProductUpdate){       
     product.quantity++;     
-    this.productService.CardProductUpdateInc(product.id,product.productId,product.name,product.type,product.quantity,product.price)   
+    const sumPrice=product.price*product.quantity;
+
+    this.productService.CardProductUpdateInc(product.id,product.productId,product.name,product.type,
+                                             product.quantity,product.price,sumPrice)   
     
   }
 
   decrement(product:CardProductUpdate){
     if(product.quantity>0)
     product.quantity--;
-    this.productService.CardProductUpdateDec(product.id,product.productId,product.name,product.type,product.quantity,product.price)  
+
+    const sumPrice=product.price*product.quantity;
+    this.productService.CardProductUpdateDec(product.id,product.productId,product.name,product.type,
+                                            product.quantity,product.price,sumPrice)  
     
   }
 
@@ -66,16 +74,16 @@ export class ProductPageComponent implements OnInit {
       
      var cardQuantity=0;
      var buyProducts:BuyProductInfoRequest[]=[];
-
+      console.log(this.cardData)
     this.cardData.forEach(element => {
         cardQuantity+=element.quantity;
-
-       var buyProduct:BuyProductInfoRequest={productId:element.productId,price:element.price}
+        
+       var buyProduct:BuyProductInfoRequest={id:element.id,productId:element.productId,price:element.sumPrice}
          
         buyProducts.push(buyProduct)
       });
 
-      if(cardQuantity>this.account.amount){
+      if(cardQuantity>this.amount){
         alert("თქვენ ანგარიშზე არ არის საკმარისი თანხა")
       }
       else{
@@ -88,8 +96,25 @@ export class ProductPageComponent implements OnInit {
    }
    
    vaucerName!:string;
-
-   getVaucer(){
+   vaucerPrice!:number;
+   vaucerUserResponse!:VaucerUserResponse;
+   
+   getVaucer(id:number){
+    if(this.vaucerName==null)
+    alert("VaucerName is Empty")
+    else{      
+      var userId=localStorage.getItem("userId");
+      const vaucerRequest:UseVaucerRequest={id:id,userId:userId!,vaucerName:this.vaucerName}
+      this.vaucerService.UseVaucer(vaucerRequest)
+          .subscribe(response=>{
+            if(response.status==true){
+              this.vaucerPrice=response.price;
+            }
+            alert(response.status);
+           
+          });
+         
+    }
       
    }
     
@@ -98,12 +123,13 @@ export class ProductPageComponent implements OnInit {
           .subscribe(data=>{
             this.data=data;
             console.log(this.data)
+            console.log(this.vaucerPrice)
           })         
 
      this.productService.getCardProduct()
           .subscribe(data=>{
             this.cardData=data;
-           
+         
           })  
           
           var userId=localStorage.getItem("userId");
@@ -116,7 +142,7 @@ export class ProductPageComponent implements OnInit {
       
       this.userAccountService.GetUserAccount(userId!)
                              .subscribe(account=>{
-                              this.account=account;
+                              this.amount=account.amount;
                              })
 
   }    

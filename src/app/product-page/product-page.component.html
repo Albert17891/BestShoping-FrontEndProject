@@ -1,7 +1,7 @@
 <section id="interPage">
   <div class="wrapper">
     <div>
-     <p-table [value]="data" styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '100rem'}" 
+     <p-table [value]="data" styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '70rem'}" 
      [paginator]="true"
       [rows]="3">       
         <ng-template pTemplate="header">
@@ -50,17 +50,22 @@
                     <button (click)="increment(product)">+</button>
                   </div>
                   <p>{{product.price}}</p>
-                  <h2>{{product.price*product.quantity}}</h2>                  
-              </div>             
+                  <div>
+                    <h2 *ngIf="vaucerPrice!=null">{{product.price*product.quantity-vaucerPrice}}</h2>
+                    <h2 *ngIf="vaucerPrice==null">{{product.price*product.quantity}}</h2>
+                  </div>
+                                
+              </div>    
+              <button id="vaucerUseButton" (click)="getVaucer(product.id)">ვაუჩერის გამოყენება</button>           
            </div>
                  
           </div>
           <button class="buy" (click)="buy()">შეძენა</button>
 
       </div>          
-     <h3>ჩემი ანგარიში {{account.amount}}</h3>
+      <h3>ჩემი ანგარიში {{amount}}</h3>
        <div class="vaucerUse">
-        <button id="vaucerUseButton" (click)="getVaucer()">ვაუჩერის გამოყენება</button>
+         <p id="pvaucer">აქ ჩასვით ვაუჩერის სახელი<p>
         <input id="vaucerInput" name="vaucerName" [(ngModel)]="vaucerName">
        </div>
     

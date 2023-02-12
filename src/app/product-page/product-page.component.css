@@ -222,19 +222,23 @@ color: #1B385B;
 
 #vaucerInput{
     position: absolute;
-    width: 385px;
+    width: 355px;
     height: 40px;
     border: 2px solid #E7F2FD;
     top:30px;
-    left: -250px;
+    left: -220px;
 }
 
 #vaucerUseButton{
-    position: absolute;
+   
     cursor: pointer;
-    padding: 20px;
-    top: 100px;
-    right: 10px;
+    padding: 5px;
+   
    background-color: rgb(202, 87, 87);
    font-size: large;
+}
+
+#pvaucer{
+    position: relative;
+    right: inherit;
 }
