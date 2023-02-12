@@ -9,18 +9,19 @@ import { ProductReportService } from '../product-report.service';
 })
 export class ProductReportComponent {
 
-  topTenProduct!:TopProduct[];
+  
 
   constructor(public productReportService:ProductReportService){}
 
   topTen(){
-        this.productReportService.topTen()
-        .subscribe(response=>{
-          this.topTenProduct=response;
-        })
+        this.productReportService.topTen();       
   }
 
   AveragePrice(){
 
+  }
+
+  topTenUser(){
+          this.productReportService.GetTopTenUsers();
   }
 }
