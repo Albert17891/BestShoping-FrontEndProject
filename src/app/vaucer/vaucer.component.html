@@ -16,12 +16,15 @@
         <tr>
             <th>ვაუჩერის ვადა</th>
             <th>ვის ეკუთვნის</th>
-            <th>პროდუქტის სახელი</th>            
+            <th>პროდუქტის სახელი</th>  
+            <th>გამოყენებულია</th>          
         </tr>
         <tr *ngFor="let vaucer of vaucers">
             <td>{{vaucer.expireTime}}</td>
             <td>{{vaucer.userName}}</td>
             <td>{{vaucer.productName}}</td>
+            <td>{{vaucer.isUsed}}</td>
+            
             <button (click)="deleteVaucer(vaucer.id)">წაშლა</button>
         </tr>
     </table>

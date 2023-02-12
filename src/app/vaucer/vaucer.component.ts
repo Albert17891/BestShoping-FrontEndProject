@@ -31,6 +31,7 @@ export class VaucerComponent implements OnInit {
     this.vaucerService.GetVaucer()
         .subscribe(data=>{
           this.vaucers=data;
+          
         })
   }
 

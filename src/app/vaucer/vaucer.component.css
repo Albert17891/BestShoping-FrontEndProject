@@ -78,11 +78,18 @@ table {
   }
   
   tr:nth-child(even) {
+    position: relative;
     background-color: #dddddd;
+    
   }
   
 button{
     cursor: pointer;
     background-color:red;
     padding: 5px;
+}
+
+tr{
+    position: relative;
+    
 }
