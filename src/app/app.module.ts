@@ -24,6 +24,9 @@ import { ProductReportComponent } from './product-report/product-report.componen
 import { VaucerComponent } from './vaucer/vaucer.component';
 import {DropdownModule} from 'primeng/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TopProductComponent } from './top-product/top-product.component';
+import { TopUserComponent } from './top-user/top-user.component';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserManagementComponent,
     ProductManagementComponent,
     ProductReportComponent,
-    VaucerComponent
+    VaucerComponent,
+    TopProductComponent,
+    TopUserComponent
+   
   ],
   imports: [
     BrowserModule,

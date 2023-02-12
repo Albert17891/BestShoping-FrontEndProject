@@ -1,7 +1,7 @@
 import { HttpClient,HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { delay, map, Observable } from 'rxjs';
 import { CardProduct } from './interfaces/CardProduct';
 import { CardProductUpdate } from './interfaces/CardProductUpdate';
 import { ProductResponse } from './interfaces/ProductResponse';
@@ -33,23 +33,25 @@ export class ProductAddService  {
        
     const product:CardProduct={userId:localStorage.getItem("userId"),productId:productId,name:name,type:type,quantity:quantity,price:price}        
     this.http.post("https://localhost:7246/Card/add-card-products",product)
-          .pipe()
+          .pipe(delay(2000))
          .subscribe(response=>{             
          })  ;
   }
 
-  CardProductUpdateInc(id:number,productId:number,name:string,type:string,quantity:number,price:number){
-    const product:CardProductUpdate={id:id,userId:localStorage.getItem("userId"),productId:productId,name:name,type:type,quantity:quantity,price:price}        
+  CardProductUpdateInc(id:number,productId:number,name:string,type:string,quantity:number,price:number,sumPrice:number){
+    const product:CardProductUpdate={id:id,userId:localStorage.getItem("userId"),productId:productId,name:name,
+                                      type:type,quantity:quantity,price:price,sumPrice:sumPrice}        
     this.http.post("https://localhost:7246/Card/inc-update-card-products",product)
-         .pipe()
+         .pipe(delay(2000))
          .subscribe(response=>{             
          })  ;
   }
 
-  CardProductUpdateDec(id:number,productId:number,name:string,type:string,quantity:number,price:number){
-    const product:CardProductUpdate={id:id,userId:localStorage.getItem("userId"),productId:productId,name:name,type:type,quantity:quantity,price:price}        
+  CardProductUpdateDec(id:number,productId:number,name:string,type:string,quantity:number,price:number,sumPrice:number){
+    const product:CardProductUpdate={id:id,userId:localStorage.getItem("userId"),productId:productId,name:name,type:type,
+                                        quantity:quantity,price:price,sumPrice:sumPrice}        
     this.http.post("https://localhost:7246/Card/dec-update-card-products",product)
-          .pipe()
+          .pipe(delay(2000))
          .subscribe(response=>{             
          })  ;
   }
