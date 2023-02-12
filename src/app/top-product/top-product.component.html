@@ -1,0 +1,12 @@
+<table>
+    <tr>
+        <th>სახელი</th>
+        <th>ფასი</th>
+        <th>რაოდენობა</th>        
+    </tr>
+    <tr *ngFor="let product of topTenProduct">
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.sumQuantity}}</td>
+    </tr>
+</table>
