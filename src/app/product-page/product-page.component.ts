@@ -33,8 +33,20 @@ export class ProductPageComponent implements OnInit {
   
 
   increment(product:CardProductUpdate){       
-    product.quantity++;     
-    const sumPrice=product.price*product.quantity;
+    product.quantity++;
+    
+    let sumPrice=0;
+      
+    if(product.price*product.quantity!=product.sumPrice){
+      var differentedPrice=product.price+product.sumPrice;
+      
+      sumPrice=differentedPrice;
+    }
+    else{
+      sumPrice=product.price*product.quantity;
+    }
+
+    
 
     this.productService.CardProductUpdateInc(product.id,product.productId,product.name,product.type,
                                              product.quantity,product.price,sumPrice)   
@@ -45,7 +57,17 @@ export class ProductPageComponent implements OnInit {
     if(product.quantity>0)
     product.quantity--;
 
-    const sumPrice=product.price*product.quantity;
+    let sumPrice=0;
+      
+    if(product.price*product.quantity!=product.sumPrice){
+      var differentedPrice=product.sumPrice-product.price;      
+      sumPrice=differentedPrice;
+    }
+    else{
+      sumPrice=product.price*product.quantity;
+    }
+
+   
     this.productService.CardProductUpdateDec(product.id,product.productId,product.name,product.type,
                                             product.quantity,product.price,sumPrice)  
     
@@ -95,9 +117,9 @@ export class ProductPageComponent implements OnInit {
 
    }
    
-   vaucerName!:string;
-   vaucerPrice!:number;
+   vaucerName!:string;   
    vaucerUserResponse!:VaucerUserResponse;
+  
    
    getVaucer(id:number){
     if(this.vaucerName==null)
@@ -107,23 +129,29 @@ export class ProductPageComponent implements OnInit {
       const vaucerRequest:UseVaucerRequest={id:id,userId:userId!,vaucerName:this.vaucerName}
       this.vaucerService.UseVaucer(vaucerRequest)
           .subscribe(response=>{
-            if(response.status==true){
-              this.vaucerPrice=response.price;
-            }
+            
             alert(response.status);
            
-          });
-         
-    }
-      
+          });         
+    }      
+   }
+
+   totalPrice!:number
+
+   getPrice(price:number,sumPrice:number):number{
+       var vaucerPrice=price-sumPrice;  
+       this.totalPrice=price-vaucerPrice;    
+       return price-vaucerPrice;   
+
    }
     
-  ngOnInit()  {
+  ngOnInit()  {    
+
+
      this.productService.getProduct()
           .subscribe(data=>{
             this.data=data;
-            console.log(this.data)
-            console.log(this.vaucerPrice)
+           
           })         
 
      this.productService.getCardProduct()

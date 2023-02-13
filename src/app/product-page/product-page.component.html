@@ -51,8 +51,8 @@
                   </div>
                   <p>{{product.price}}</p>
                   <div>
-                    <h2 *ngIf="vaucerPrice!=null">{{product.price*product.quantity-vaucerPrice}}</h2>
-                    <h2 *ngIf="vaucerPrice==null">{{product.price*product.quantity}}</h2>
+                    <h2  *ngIf="product.sumPrice!=product.price*product.quantity; ">{{getPrice((product.price*product.quantity),product.sumPrice)}}</h2>
+                    <h2 *ngIf="product.sumPrice==product.price*product.quantity">{{product.price*product.quantity}}</h2>
                   </div>
                                 
               </div>    

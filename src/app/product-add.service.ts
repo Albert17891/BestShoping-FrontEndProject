@@ -38,13 +38,20 @@ export class ProductAddService  {
          })  ;
   }
 
-  CardProductUpdateInc(id:number,productId:number,name:string,type:string,quantity:number,price:number,sumPrice:number){
+ async CardProductUpdateInc(id:number,productId:number,name:string,type:string,quantity:number,price:number,sumPrice:number){
     const product:CardProductUpdate={id:id,userId:localStorage.getItem("userId"),productId:productId,name:name,
                                       type:type,quantity:quantity,price:price,sumPrice:sumPrice}        
-    this.http.post("https://localhost:7246/Card/inc-update-card-products",product)
-         .pipe(delay(2000))
-         .subscribe(response=>{             
-         })  ;
+   await this.http.post("https://localhost:7246/Card/inc-update-card-products",product)
+                  .pipe(map(res=>res))
+                  .subscribe(
+                    
+                    error=>`Error with Increment method`
+                    
+                  );
+
+                
+                           
+           
   }
 
   CardProductUpdateDec(id:number,productId:number,name:string,type:string,quantity:number,price:number,sumPrice:number){
