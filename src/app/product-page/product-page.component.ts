@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { CardProduct } from '../interfaces/CardProduct';
 import { CardProductUpdate } from '../interfaces/CardProductUpdate';
@@ -28,7 +28,7 @@ export class ProductPageComponent implements OnInit {
   amount!:number;
 
   constructor(private productService:ProductAddService,private authService:AuthService,
-    private vaucerService:VaucerService,private userAccountService:UserAccountService){}
+    private vaucerService:VaucerService,private userAccountService:UserAccountService,private cdr: ChangeDetectorRef){}
   
   
 
@@ -69,8 +69,8 @@ export class ProductPageComponent implements OnInit {
 
    
     this.productService.CardProductUpdateDec(product.id,product.productId,product.name,product.type,
-                                            product.quantity,product.price,sumPrice)  
-    
+                                            product.quantity,product.price,sumPrice) 
+        this.cdr.detectChanges();
   }
 
    onAddToCard(product:ProductResponse){
@@ -94,25 +94,25 @@ export class ProductPageComponent implements OnInit {
 // Buy function
    buy(){
       
-     var cardQuantity=0;
+     var cardPrice=0;
      var buyProducts:BuyProductInfoRequest[]=[];
       console.log(this.cardData)
     this.cardData.forEach(element => {
-        cardQuantity+=element.quantity;
+        cardPrice+=element.price;
         
        var buyProduct:BuyProductInfoRequest={id:element.id,productId:element.productId,price:element.sumPrice}
          
         buyProducts.push(buyProduct)
       });
-
-      if(cardQuantity>this.amount){
+      
+      if(cardPrice>this.amount){
+       
         alert("თქვენ ანგარიშზე არ არის საკმარისი თანხა")
       }
       else{
         var userId=localStorage.getItem("userId");
         const purchase:BuyProductRequest={userId:userId!,buyProducts:buyProducts}
-        this.userAccountService.buy(purchase);
-        
+        this.userAccountService.buy(purchase);        
       }
 
    }
@@ -157,7 +157,7 @@ export class ProductPageComponent implements OnInit {
      this.productService.getCardProduct()
           .subscribe(data=>{
             this.cardData=data;
-         
+              
           })  
           
           var userId=localStorage.getItem("userId");

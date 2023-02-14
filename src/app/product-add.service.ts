@@ -1,7 +1,7 @@
 import { HttpClient,HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Injectable, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { delay, map, Observable } from 'rxjs';
+import { delay, map, Observable, Subject, takeUntil, takeWhile } from 'rxjs';
 import { CardProduct } from './interfaces/CardProduct';
 import { CardProductUpdate } from './interfaces/CardProductUpdate';
 import { ProductResponse } from './interfaces/ProductResponse';
@@ -38,16 +38,18 @@ export class ProductAddService  {
          })  ;
   }
 
- async CardProductUpdateInc(id:number,productId:number,name:string,type:string,quantity:number,price:number,sumPrice:number){
+  unsubscribe:Subject<void>=new Subject<void>();
+
+  CardProductUpdateInc(id:number,productId:number,name:string,type:string,quantity:number,price:number,sumPrice:number){
     const product:CardProductUpdate={id:id,userId:localStorage.getItem("userId"),productId:productId,name:name,
                                       type:type,quantity:quantity,price:price,sumPrice:sumPrice}        
-   await this.http.post("https://localhost:7246/Card/inc-update-card-products",product)
-                  .pipe(map(res=>res))
+    this.http.post("https://localhost:7246/Card/inc-update-card-products",product)
+                  .pipe()
                   .subscribe(
+                       
+                  )
                     
-                    error=>`Error with Increment method`
-                    
-                  );
+                
 
                 
                            
