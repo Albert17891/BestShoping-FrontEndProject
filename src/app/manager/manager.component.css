@@ -63,14 +63,29 @@ table {
   }
 
   button{
-    cursor: pointer;
-    margin: 5px;
-    background-color: red;
-    padding: 5px;
+    cursor: pointer; 
+   
+    padding: 4px;
+
+    background-color: rgb(202, 87, 87);
+   font-size: large;
+   margin: 10px 4px;
+   border-radius: 8px;
+   border: solid 1px #222;
+   color: #FFF;
   }
 
   h2{
     
     font-family: 'Courier New', Courier, monospace;
+    
+  }
+
+  .inputSum{
+    padding: 10px;
+    position: absolute;
+    width: 55px;
+    height: 40px;
+    border: 2px solid #4179b2;
     
   }

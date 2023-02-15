@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { JsonpInterceptor } from '@angular/common/http';
+import { assertPlatform, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { NumberValueAccessor } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { ProductResponse } from '../interfaces/ProductResponse';
@@ -7,10 +9,12 @@ import { ManagerService } from '../manager.service';
 import { Product } from '../Product';
 import { UserAccountService } from '../service/user-account.service';
 
+
 @Component({
   selector: 'app-manager',
   templateUrl: './manager.component.html',
-  styleUrls: ['./manager.component.css']
+  styleUrls: ['./manager.component.css'],
+  
 })
 export class ManagerComponent implements OnInit {
 
@@ -18,8 +22,16 @@ export class ManagerComponent implements OnInit {
 
 
   constructor(public managerService:ManagerService,public route:Router,public authService:AuthService,
-                                                  public userAccountService:UserAccountService){}
+                                                  public userAccountService:UserAccountService,
+                                                 ){}
 
+
+     
+
+    discount(id:number){       
+        localStorage.setItem("productId",JSON.stringify(id));
+        this.route.navigate(["discount"]);
+    }                                              
 
   ngOnInit() {
     this.managerService.getMyProduct()
@@ -40,7 +52,7 @@ export class ManagerComponent implements OnInit {
      this.managerService.iniProduct(product);
      this.route.navigate(["update"])
   }
-
+   
 
   deleteProduct(product:ProductResponse){
     this.managerService.deleteProduct(product)
