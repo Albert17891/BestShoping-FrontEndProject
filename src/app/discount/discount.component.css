@@ -1,0 +1,111 @@
+.startLabel{
+    position: absolute;
+    width: 350px;
+    height: 17px;
+    left: 700px;
+    top: 250px;
+    
+    font-family: 'Helvetica Neue LT GEO';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 17px;
+}
+.startInput{
+    position: absolute;
+    width: 305px;
+    height: 60px;
+    left: 1050px;
+    top: 240px;
+    
+    border: 2px solid #133251;
+}
+.endLabel{
+    position: absolute;
+    width: 350px;
+    height: 17px;
+    left: 700px;
+    top: 350px;
+    
+    font-family: 'Helvetica Neue LT GEO';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 17px;
+}
+.endInput{
+    position: absolute;
+    width: 305px;
+    height: 60px;
+    left: 1050px;
+    top: 330px;
+    
+    border: 2px solid #2a547f;
+}
+
+.percentLabel{
+    position: absolute;
+    width: 350px;
+    height: 17px;
+    left: 700px;
+    top: 450px;
+    
+    font-family: 'Helvetica Neue LT GEO';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 17px;
+}
+.percentInput{
+    position: absolute;
+    width: 305px;
+    height: 60px;
+    left: 1050px;
+    top: 440px;
+    
+    border: 2px solid #173552;
+}
+
+#button{
+    position:absolute;
+    cursor: pointer;
+    padding: 5px;
+   
+   background-color: rgb(202, 87, 87);
+   font-size: large;
+   margin: 10px 0;
+   border-radius: 8px;
+   border: solid 1px #222;
+   color: #FFF;
+   top: 550px;
+   left:1100px;
+}
+
+table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  button{
+    cursor: pointer; 
+   
+    padding: 4px;
+
+    background-color: rgb(21, 77, 41);
+   font-size: large;
+   margin: 10px 4px;
+   border-radius: 8px;
+   border: solid 1px #222;
+   color: #FFF;
+  }

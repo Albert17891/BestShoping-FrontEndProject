@@ -1,0 +1,27 @@
+<div>
+    <div>
+        <table>
+              <tr>
+                <th>პროდუქტის სახელი</th>
+                <th>დამთავრების დრო</th>                
+                <th>პროცენტი</th>
+              </tr>
+              <tr *ngFor="let discount of discounts">
+                 <td>{{discount.productName}}</td>
+                 <td>{{discount.endTime}}</td>
+                 <td>{{discount.percent}}</td>
+                 <button (click)="deleteDiscount(discount.productId)">წაშლა</button>
+              </tr>
+        </table>
+    </div>
+   
+    <form #f="ngForm" (ngSubmit)="createDiscount(f)">
+        <label class="startLabel">ფასდაკლების დაწღების თარიღი</label>
+        <input class="startInput" name="startTime" type="datetime-local" ngModel>
+        <label class="endLabel">ფასდაკლების დამთავრების თარიღი</label>
+        <input class="endInput" name="endTime" type="datetime-local" ngModel>
+        <label class="percentLabel">ფასდაკლების რაოდენობა</label>
+        <input class="percentInput" name="percent"  ngModel>
+        <button id="button">დამატება</button>
+    </form>
+</div>
