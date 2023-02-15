@@ -28,8 +28,7 @@ export class UserManagementComponent implements OnInit {
       this.adminManager.DeleteUser(email);
    }
      
-   Vaucer(id:string){
-    console.log(id);
+   Vaucer(id:string){    
     localStorage.setItem("id",id);
     this.router.navigate(["vaucer"]);
     

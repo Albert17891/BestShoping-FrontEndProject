@@ -47,13 +47,17 @@ export class ProductAddService  {
                   .pipe()
                   .subscribe(
                        
-                  )
-                    
-                
-
-                
-                           
+                  )                
            
+  }
+
+  CardProductDeleteWithId(id:number){
+      var params=new HttpParams()
+      .set("id",id);
+      this.http.get("https://localhost:7246/Card/delete-card-product",{params})
+                  .pipe()
+                  .subscribe(                  
+                  )           
   }
 
   CardProductUpdateDec(id:number,productId:number,name:string,type:string,quantity:number,price:number,sumPrice:number){

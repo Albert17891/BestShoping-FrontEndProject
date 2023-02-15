@@ -26,6 +26,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TopProductComponent } from './top-product/top-product.component';
 import { TopUserComponent } from './top-user/top-user.component';
+import { DiscountComponent } from './discount/discount.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { TopUserComponent } from './top-user/top-user.component';
     ProductReportComponent,
     VaucerComponent,
     TopProductComponent,
-    TopUserComponent
+    TopUserComponent,
+    DiscountComponent
    
   ],
   imports: [
@@ -56,10 +58,12 @@ import { TopUserComponent } from './top-user/top-user.component';
     TableModule,
     PaginatorModule,
     DropdownModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+   
   ],
   providers: [{
-    provide:HTTP_INTERCEPTORS,useClass:AuthIntercepter,multi:true
+    provide:HTTP_INTERCEPTORS,useClass:AuthIntercepter,multi:true,
+    
   }],
   bootstrap: [AppComponent]
 })
