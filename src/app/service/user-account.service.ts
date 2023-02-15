@@ -21,7 +21,9 @@ export class UserAccountService {
 
    buy(purchase:BuyProductRequest){
       this.http.post("https://localhost:7246/User/buy-product",purchase)
-                  .subscribe(response=>{});
+                  .subscribe(response=>{
+                    location.reload();
+                  });
    }
 
 }

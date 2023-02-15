@@ -42,7 +42,9 @@ export class AdminMangService {
   DeleteUser(email:string){
      const deleteUser:DeleteUser={email:email}
     this.http.post("https://localhost:7246/Admin/delete-user",deleteUser)
-    .subscribe();
+    .subscribe(res=>{
+      location.reload();
+    });
   }
 
   

@@ -33,8 +33,9 @@ export class ProductAddService  {
        
     const product:CardProduct={userId:localStorage.getItem("userId"),productId:productId,name:name,type:type,quantity:quantity,price:price}        
     this.http.post("https://localhost:7246/Card/add-card-products",product)
-          .pipe(delay(2000))
-         .subscribe(response=>{             
+          .pipe()
+         .subscribe(response=>{  
+          location.reload();           
          })  ;
   }
 
@@ -45,9 +46,11 @@ export class ProductAddService  {
                                       type:type,quantity:quantity,price:price,sumPrice:sumPrice}        
     this.http.post("https://localhost:7246/Card/inc-update-card-products",product)
                   .pipe()
-                  .subscribe(
-                       
-                  )                
+                  .subscribe(res=>{
+                    location.reload();
+                  }                   
+                  )
+                               
            
   }
 
@@ -56,7 +59,9 @@ export class ProductAddService  {
       .set("id",id);
       this.http.get("https://localhost:7246/Card/delete-card-product",{params})
                   .pipe()
-                  .subscribe(                  
+                  .subscribe( res=>{
+                    location.reload(); 
+                  }                                      
                   )           
   }
 
@@ -65,7 +70,8 @@ export class ProductAddService  {
                                         quantity:quantity,price:price,sumPrice:sumPrice}        
     this.http.post("https://localhost:7246/Card/dec-update-card-products",product)
           .pipe(delay(2000))
-         .subscribe(response=>{             
+         .subscribe(response=>{  
+          location.reload(); 
          })  ;
   }
 

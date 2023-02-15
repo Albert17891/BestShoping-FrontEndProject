@@ -15,7 +15,9 @@ export class DiscountService {
 
   createDiscount(discount:DiscountRequest){
      this.http.post("https://localhost:7246/Discount/create-discount",discount)
-              .subscribe();
+              .subscribe(res=>{
+                location.reload();
+              });
   }
 
   getDiscounts():Observable<DiscountResponse[]>{
@@ -26,6 +28,8 @@ export class DiscountService {
     var params=new HttpParams()
       .set("id",id)
       this.http.get("https://localhost:7246/Discount/delete-discount",{params})
-                                             .subscribe();
+                                             .subscribe(res=>{
+                                              location.reload();
+                                             });
   }
 }

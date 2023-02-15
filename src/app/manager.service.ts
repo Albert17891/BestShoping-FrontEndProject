@@ -36,7 +36,7 @@ export class ManagerService {
   deleteProduct(product:ProductResponse){    
     this.http.post("https://localhost:7246/Product/product-delete",product)
               .subscribe(response=>{
-
+                   location.reload();
               })
   }
 

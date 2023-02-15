@@ -15,6 +15,7 @@ import { VaucerService } from '../service/vaucer-service';
 import { VaucerUserResponse } from '../interfaces/Vaucer/VaucerUserResponse';
 import { DiscountService } from '../service/Discount/discount.service';
 import { DiscountResponse } from '../interfaces/Discount/DiscountResponse';
+import { Observable } from 'rxjs/internal/Observable';
 
 
 @Component({
@@ -24,8 +25,9 @@ import { DiscountResponse } from '../interfaces/Discount/DiscountResponse';
 })
 export class ProductPageComponent implements OnInit {
   
-  data!: ProductResponse[];
+  data!:ProductResponse[];
   cardData!:CardProductUpdate[];
+ 
   vaucers!:VaucerForUser[];
   amount!:number;
   discountResponse!:DiscountResponse[];
@@ -55,6 +57,7 @@ export class ProductPageComponent implements OnInit {
     this.productService.CardProductUpdateInc(product.id,product.productId,product.name,product.type,
                                              product.quantity,product.price,sumPrice)   
     
+                                             
   }
 
   decrement(product:CardProductUpdate){
@@ -73,8 +76,9 @@ export class ProductPageComponent implements OnInit {
 
    
     this.productService.CardProductUpdateDec(product.id,product.productId,product.name,product.type,
-                                            product.quantity,product.price,sumPrice) 
-       
+                                            product.quantity,product.price,sumPrice)       
+
+                                        
   }
 
    onAddToCard(product:ProductResponse){
@@ -99,9 +103,11 @@ export class ProductPageComponent implements OnInit {
    buy(){
       
      var cardPrice=0;
-     var buyProducts:BuyProductInfoRequest[]=[];
+     var buyProducts:BuyProductInfoRequest[]=[];  
+
       
     this.cardData.forEach(element => {
+      
         cardPrice+=element.price;
         
        var buyProduct:BuyProductInfoRequest={id:element.id,productId:element.productId,price:element.sumPrice}
@@ -135,7 +141,8 @@ export class ProductPageComponent implements OnInit {
       const vaucerRequest:UseVaucerRequest={id:id,userId:userId!,vaucerName:this.vaucerName}
       this.vaucerService.UseVaucer(vaucerRequest)
           .subscribe(response=>{            
-            alert(response.status);           
+            alert(response.status);
+            location.reload();           
           });         
     }      
    }
@@ -156,17 +163,19 @@ export class ProductPageComponent implements OnInit {
   ngOnInit()  {    
 
 
-     this.productService.getProduct()
-          .subscribe(data=>{
-            this.data=data;
-           
-          })         
+  this.productService.getProduct()
+                    .subscribe(data=>{
+                      this.data=data
+                    })
+                
 
-     this.productService.getCardProduct()
-          .subscribe(data=>{
-            this.cardData=data;
-              
-          })  
+   this.productService.getCardProduct()
+               .subscribe(res=>{
+                this.cardData=res;
+               })
+                        ///
+                      
+          
           
           var userId=localStorage.getItem("userId");
 

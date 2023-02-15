@@ -17,7 +17,9 @@ export class VaucerService {
 
   CreateVaucer(vaucerData:VaucerModel){
         this.http.post("https://localhost:7246/Admin/create-vaucer",vaucerData)
-        .subscribe()
+        .subscribe(res=>{
+          location.reload();
+        })
   }
 
   GetVaucer():Observable<VaucerShow[]>{
@@ -28,7 +30,9 @@ export class VaucerService {
     const deleteVaucer:DeleteVaucerRequest={id:id};    
    
     this.http.post("https://localhost:7246/Admin/delete-vaucer",deleteVaucer)
-      .subscribe();
+      .subscribe(res=>{
+        location.reload();
+      });
   }
 
   GetVaucerForUser(id:string):Observable<VaucerForUser[]>{
@@ -41,7 +45,7 @@ export class VaucerService {
   
   UseVaucer(vaucerRequest:UseVaucerRequest):Observable<VaucerUserResponse>{
    
-     return this.http.post<VaucerUserResponse>("https://localhost:7246/User/use-vaucer",vaucerRequest);
+     return this.http.post<VaucerUserResponse>("https://localhost:7246/User/use-vaucer",vaucerRequest);                    
   }
 
 }
