@@ -259,3 +259,30 @@ color: #1B385B;
     right: 120px;
 
 }
+
+.deleteCartProduct{
+    position: relative;
+    left: 240px;
+     padding: 5px;
+    top: -60px;
+    
+    cursor: pointer;
+    background-color: rgb(73, 92, 20);
+    font-size: large;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: solid 1px #222;
+    color: #FFF;
+   
+}
+
+.discount{
+    position: relative;
+}
+
+.dicountP{
+    position: relative;
+    top: -40px;
+    left: 180px;
+    
+}

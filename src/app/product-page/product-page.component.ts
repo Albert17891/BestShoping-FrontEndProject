@@ -13,6 +13,8 @@ import { ProductAddService } from '../product-add.service';
 import { UserAccountService } from '../service/user-account.service';
 import { VaucerService } from '../service/vaucer-service';
 import { VaucerUserResponse } from '../interfaces/Vaucer/VaucerUserResponse';
+import { DiscountService } from '../service/Discount/discount.service';
+import { DiscountResponse } from '../interfaces/Discount/DiscountResponse';
 
 
 @Component({
@@ -26,9 +28,11 @@ export class ProductPageComponent implements OnInit {
   cardData!:CardProductUpdate[];
   vaucers!:VaucerForUser[];
   amount!:number;
+  discountResponse!:DiscountResponse[];
 
   constructor(private productService:ProductAddService,private authService:AuthService,
-    private vaucerService:VaucerService,private userAccountService:UserAccountService,private cdr: ChangeDetectorRef){}
+    private vaucerService:VaucerService,private userAccountService:UserAccountService
+    ,private discountService:DiscountService){}
   
   
 
@@ -70,7 +74,7 @@ export class ProductPageComponent implements OnInit {
    
     this.productService.CardProductUpdateDec(product.id,product.productId,product.name,product.type,
                                             product.quantity,product.price,sumPrice) 
-        this.cdr.detectChanges();
+       
   }
 
    onAddToCard(product:ProductResponse){
@@ -96,7 +100,7 @@ export class ProductPageComponent implements OnInit {
       
      var cardPrice=0;
      var buyProducts:BuyProductInfoRequest[]=[];
-      console.log(this.cardData)
+      
     this.cardData.forEach(element => {
         cardPrice+=element.price;
         
@@ -123,15 +127,15 @@ export class ProductPageComponent implements OnInit {
    
    getVaucer(id:number){
     if(this.vaucerName==null)
-    alert("VaucerName is Empty")
+    {
+    alert("VaucerName is Empty")    
+    }
     else{      
       var userId=localStorage.getItem("userId");
       const vaucerRequest:UseVaucerRequest={id:id,userId:userId!,vaucerName:this.vaucerName}
       this.vaucerService.UseVaucer(vaucerRequest)
-          .subscribe(response=>{
-            
-            alert(response.status);
-           
+          .subscribe(response=>{            
+            alert(response.status);           
           });         
     }      
    }
@@ -143,6 +147,10 @@ export class ProductPageComponent implements OnInit {
        this.totalPrice=price-vaucerPrice;    
        return price-vaucerPrice;   
 
+   }
+
+   deleteCardProduct(id:number){
+        this.productService.CardProductDeleteWithId(id);
    }
     
   ngOnInit()  {    
@@ -172,6 +180,10 @@ export class ProductPageComponent implements OnInit {
                              .subscribe(account=>{
                               this.amount=account.amount;
                              })
+        this.discountService.getDiscounts()
+                      .subscribe(data=>{
+                        this.discountResponse=data;
+                      })                     
 
   }    
 }

@@ -20,6 +20,9 @@
             <div class="card-button">
                 <button id="button" (click)="onAddToCard(product)"><img src="./assets/Icon/Card.png"></button>
               </div>
+              <div class="discount" *ngFor="let discount of discountResponse">
+                   <h4 class="dicountP" *ngIf="discount.productId==product.id">ფასდაკლება {{discount.percent}}% {{discount.endTime}} დე</h4>
+              </div>
               <div class="vaucer" *ngFor="let vaucer of vaucers">
                 <button id="vaucerButton" (click)="getVaucerName(vaucer.vaucerName)" *ngIf="product.id==vaucer.productId">ვაუჩერის აღება</button>
               </div>
@@ -56,10 +59,12 @@
                   </div>
                                 
               </div>    
-              <button id="vaucerUseButton" (click)="getVaucer(product.id)">ვაუჩერის გამოყენება</button>           
+              <button id="vaucerUseButton" (click)="getVaucer(product.id)">ვაუჩერის გამოყენება</button>   
+              <button class="deleteCartProduct" (click)="deleteCardProduct(product.id)">წაშლა</button>        
            </div>
-                 
+                       
           </div>
+              
           <button class="buy" (click)="buy()">შეძენა</button>
 
       </div>          
