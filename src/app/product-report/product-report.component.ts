@@ -21,6 +21,10 @@ export class ProductReportComponent {
 
   }
 
+  topTenSeller(){
+     this.productReportService.topTenSeller();
+  }
+
   topTenUser(){
           this.productReportService.GetTopTenUsers();
   }
