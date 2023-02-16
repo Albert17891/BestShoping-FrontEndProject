@@ -37,6 +37,7 @@ export class ManagerComponent implements OnInit {
     this.managerService.getMyProduct()
                 .subscribe(data=>{
                   this.products=data;
+                  console.log(data)
                 })
                 var userId=localStorage.getItem("userId");
 
