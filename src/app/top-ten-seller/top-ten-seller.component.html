@@ -1,0 +1,19 @@
+<table>
+    <tr>
+        <th>სახელი</th>
+        <th>მთლიანი შემოსავალი</th>         
+           
+        <th>პროდუქტების რაოდენობის ჯამი</th>  
+        <th>პროდუქტების ფასის ჯამი</th>     
+
+    </tr>
+    <tr *ngFor="let seller of topTenSellers">
+        <td>{{seller.name}}</td>
+        <td>{{seller.moneySum}}</td>    
+         
+        <td>{{seller.productQantitySum}}</td>    
+        <td>{{seller.productAmountSum}}</td>    
+
+    </tr>
+</table>
+

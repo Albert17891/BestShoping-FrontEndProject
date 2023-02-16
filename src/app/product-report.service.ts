@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { TopProduct } from './interfaces/ProductReport/TopProduct';
+import { TopTenSeller } from './interfaces/ProductReport/TopTenSeller';
 import { TopUsers } from './interfaces/ProductReport/TopUser';
 
 @Injectable({
@@ -14,6 +15,7 @@ export class ProductReportService {
 
   topTenProduct!:TopProduct[];
   topTenUsers!:TopUsers[];
+  topTenSellers!:TopTenSeller[];
 
    topTen(){
          this.http.get<TopProduct[]>("https://localhost:7246/Report/get-top-ten")
@@ -35,4 +37,12 @@ export class ProductReportService {
     
    }
 
+   topTenSeller(){
+      this.http.get<TopTenSeller[]>("https://localhost:7246/Report/get-top-ten-seller")
+      .subscribe(data=>{
+           this.topTenSellers=data;
+           console.log(data)
+            this.route.navigate(["top-seller"])
+   })
+   }
 }

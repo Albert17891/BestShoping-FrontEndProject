@@ -12,6 +12,7 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { ProductReportComponent } from './product-report/product-report.component';
 import { RegisterComponent } from './register/register.component';
 import { TopProductComponent } from './top-product/top-product.component';
+import { TopTenSellerComponent } from './top-ten-seller/top-ten-seller.component';
 import { TopUserComponent } from './top-user/top-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { UpdateComponent } from './update/update.component';
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path:"top-product",component:TopProductComponent},
   {path:"top-user",component:TopUserComponent},
   {path:"discount",component:DiscountComponent},  
+  {path:"top-seller",component:TopTenSellerComponent},
   {path:'',redirectTo:'/login',pathMatch:'full'}
 ];
 

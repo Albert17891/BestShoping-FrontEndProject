@@ -27,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TopProductComponent } from './top-product/top-product.component';
 import { TopUserComponent } from './top-user/top-user.component';
 import { DiscountComponent } from './discount/discount.component';
+import { TopTenSellerComponent } from './top-ten-seller/top-ten-seller.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { DiscountComponent } from './discount/discount.component';
     VaucerComponent,
     TopProductComponent,
     TopUserComponent,
-    DiscountComponent
+    DiscountComponent,
+    TopTenSellerComponent
    
   ],
   imports: [
