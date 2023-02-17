@@ -1,5 +1,4 @@
-#expireLabel{
-    position: absolute;
+.vauCherFormLabel{
 width: 150px;
 height: 17px;
 left: 700px;
@@ -10,9 +9,9 @@ font-style: normal;
 font-weight: 700;
 font-size: 14px;
 line-height: 17px;
+font-size: 1.1em;
 }
 #expireInput{
-    position: absolute;
     width: 485px;
     height: 40px;
     left: 700px;
@@ -21,7 +20,6 @@ line-height: 17px;
     border: 2px solid #E7F2FD;
 }
 #priceLabel{
-    position: absolute;
 width: 150px;
 height: 17px;
 left: 700px;
@@ -34,7 +32,6 @@ font-size: 14px;
 line-height: 17px;
 }
 #priceInput{
-    position: absolute;
     width: 485px;
     height: 40px;
     left: 700px;
@@ -44,8 +41,7 @@ line-height: 17px;
 }
 
 #button{
-    position: absolute;
-    width: 151px;
+    width: 100%;
     height: 50px;
     left: 850px;
     top: 430px;
@@ -55,13 +51,11 @@ line-height: 17px;
 }
 
 #drop{
-    position: absolute;
     left: 1300px;
     top:350px;
 }
 
 h2{
-    position: absolute;
     left: 1300px;
     top:250px;
 }
@@ -87,9 +81,40 @@ button{
     cursor: pointer;
     background-color:red;
     padding: 5px;
+
+    font-size:medium;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: solid 1px #222;
+    color: #FFF;
 }
 
 tr{
     position: relative;
     
+}
+
+.header{
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+}
+ .wrapper{
+    display: flex;
+    align-items: center;
+    margin: 16px 0;
+}
+
+.form_Wrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.productList{
+    display: flex;
+    align-items: center;
+}.productList h2{
+    padding: 0 13px 0 0;
 }

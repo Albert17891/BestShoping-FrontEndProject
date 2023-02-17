@@ -1,32 +1,39 @@
-<div>
-    <form #f="ngForm" (ngSubmit)="CreateVaucer(f)" >
-        
-          <label id="expireLabel">ვაუჩერის ვადა</label>
-          <input id="expireInput" type="datetime-local" name="expireTime" ngModel>
-          <label id="priceLabel">ფასი</label>
-          <input id="priceInput" name="price" ngModel>
-          <button id="button">დამატება</button>
-    </form>
-    <h2 >პროდუქტების სია</h2>
-    <p-dropdown id="drop" [options]="products" [(ngModel)]="selectedProduct" optionLabel="name"></p-dropdown>
-</div>
+<div class="header">
+    <div class="form_Wrapper">
+        <form #f="ngForm" (ngSubmit)="CreateVaucer(f)">
 
-<div class="vaucer">
-    <table>
-        <tr>
-            <th>ვაუჩერის ვადა</th>
-            <th>ვის ეკუთვნის</th>
-            <th>პროდუქტის სახელი</th>  
-            <th>გამოყენებულია</th>          
-        </tr>
-        <tr *ngFor="let vaucer of vaucers">
-            <td>{{vaucer.expireTime}}</td>
-            <td>{{vaucer.userName}}</td>
-            <td>{{vaucer.productName}}</td>
-            <td>{{vaucer.isUsed}}</td>
-            
-            <button (click)="deleteVaucer(vaucer.id)">წაშლა</button>
-        </tr>
-    </table>
-</div>
+            <div class="wrapper">
+                <div class="vauCherFormLabel"> <label>ვაუჩერის ვადა</label></div>
+                <input id="expireInput" type="datetime-local" name="expireTime" ngModel>
+            </div>
+            <div class="wrapper">
+                <div class="vauCherFormLabel"><label>ფასი</label></div>
+                <input id="priceInput" name="price" ngModel>
+            </div>
+            <button id="button">დამატება</button>
+        </form>
+        <div class="productList">
+            <h2>პროდუქტების სია</h2>
+            <p-dropdown id="drop" [options]="products" [(ngModel)]="selectedProduct" optionLabel="name"></p-dropdown>
+        </div>
+    </div>
 
+    <div class="vaucer">
+        <table>
+            <tr>
+                <th>ვაუჩერის ვადა</th>
+                <th>ვის ეკუთვნის</th>
+                <th>პროდუქტის სახელი</th>
+                <th>გამოყენებულია</th>
+            </tr>
+            <tr *ngFor="let vaucer of vaucers">
+                <td>{{vaucer.expireTime}}</td>
+                <td>{{vaucer.userName}}</td>
+                <td>{{vaucer.productName}}</td>
+                <td>{{vaucer.isUsed}}</td>
+
+                <button (click)="deleteVaucer(vaucer.id)">წაშლა</button>
+            </tr>
+        </table>
+    </div>
+</div>

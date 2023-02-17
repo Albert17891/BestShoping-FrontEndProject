@@ -20,4 +20,10 @@ table {
     margin-left: 5px;
     cursor: pointer;
     background-color: green;
+
+    font-size: large;
+    margin: 10px 8;
+    border-radius: 8px;
+    border: solid 1px #222;
+    color: #FFF;
   }
