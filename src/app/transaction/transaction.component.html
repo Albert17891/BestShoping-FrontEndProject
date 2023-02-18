@@ -1,0 +1,43 @@
+<!-- <p-table [value]="transactions" [tableStyle]="{'min-width': '50rem'}">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>ტრანზაქცის შემქმნელი</th>
+            <th>ტრანზაქცის ფასი</th>
+            <th>ტრანზაქცის დრო</th>
+            <th>გამოყენებულია ვაუჩერი</th>
+            <th>ვაუჩერის ფასი</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-transaction>
+        <tr>
+            <td>{{transaction.transactionOwnerName}}</td>
+            <td>{{transaction.transactionPrice}}</td>
+            <td>{{transaction.transactionTime}}</td>
+            <td>{{transaction.isUsedVaucer}}</td>
+            <td>{{transaction.vaucerPrice}}</td>
+        </tr>
+    </ng-template>
+</p-table> -->
+<div class="card">
+   
+    <p-table [value]="transactions" [tableStyle]="{'min-width': '60rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="transactionOwnerName" style="width:20%">ტრანზაქცის შემქმნელი <p-sortIcon field="transactionOwnerName"></p-sortIcon></th>
+                <th pSortableColumn="transactionPrice" style="width:20%">ტრანზაქცის ფასი <p-sortIcon field="transactionPrice"></p-sortIcon></th>
+                <th pSortableColumn="transactionTime" style="width:20%">ტრანზაქცის დრო <p-sortIcon field="transactionTime"></p-sortIcon></th>
+                <th pSortableColumn="isUsedVaucer" style="width:20%">გამოყენებულია ვაუჩერი <p-sortIcon field="isUsedVaucer"></p-sortIcon></th>
+                <th pSortableColumn="vaucerPrice" style="width:20%">ვაუჩერის ფასი <p-sortIcon field="vaucerPrice"></p-sortIcon></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-transaction>
+            <tr>
+                <td>{{transaction.transactionOwnerName}}</td>
+            <td>{{transaction.transactionPrice}}</td>
+            <td>{{transaction.transactionTime}}</td>
+            <td>{{transaction.isUsedVaucer}}</td>
+            <td>{{transaction.vaucerPrice}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
