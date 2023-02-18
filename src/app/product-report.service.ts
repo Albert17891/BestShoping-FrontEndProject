@@ -1,10 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { TopProduct } from './interfaces/ProductReport/TopProduct';
 import { TopTenSeller } from './interfaces/ProductReport/TopTenSeller';
 import { TopUsers } from './interfaces/ProductReport/TopUser';
+import { Transation } from './interfaces/ProductReport/Transaction';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class ProductReportService {
   topTenProduct!:TopProduct[];
   topTenUsers!:TopUsers[];
   topTenSellers!:TopTenSeller[];
+  transactions!:Transation[];
 
    topTen(){
          this.http.get<TopProduct[]>("https://localhost:7246/Report/get-top-ten")
@@ -33,8 +35,12 @@ export class ProductReportService {
     });
    }
 
-   AveragePrice(){
-    
+   GetTransaction(){
+      this.http.get<Transation[]>("https://localhost:7246/Report/get-transactions")
+      .subscribe(data=>{
+          this.transactions=data;
+            this.route.navigate(["transaction"])
+   })
    }
 
    topTenSeller(){
@@ -45,4 +51,16 @@ export class ProductReportService {
             this.route.navigate(["top-seller"])
    })
    }
+
+   GetTransactionById(id:string){
+      var params=new HttpParams()
+         .set("userId",id);
+      this.http.get<Transation[]>("https://localhost:7246/Report/get-transaction-by-id",{params})
+      .subscribe(data=>{
+          this.transactions=data;
+            this.route.navigate(["transaction"])
+   })
+  
+   }
+
 }

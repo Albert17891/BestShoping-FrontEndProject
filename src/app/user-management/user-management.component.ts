@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminMangService } from '../admin-manager.service';
 import { User } from '../interfaces/User';
+import { ProductReportService } from '../product-report.service';
 
 @Component({
   selector: 'app-user-management',
@@ -12,7 +13,7 @@ export class UserManagementComponent implements OnInit {
 
   users!:User[];
 
-  constructor(public adminManager:AdminMangService,public router:Router){}
+  constructor(public adminManager:AdminMangService,public router:Router,public reportService:ProductReportService){}
 
   onSelectionChange(email:string){
           this.adminManager.UpdateRoles(email);
@@ -32,6 +33,10 @@ export class UserManagementComponent implements OnInit {
     localStorage.setItem("id",id);
     this.router.navigate(["vaucer"]);
     
+  }
+
+  getTransactionById(id:string){
+          this.reportService.GetTransactionById(id);
   }
 
   ngOnInit() {    

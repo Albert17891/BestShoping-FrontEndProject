@@ -28,6 +28,7 @@ import { TopProductComponent } from './top-product/top-product.component';
 import { TopUserComponent } from './top-user/top-user.component';
 import { DiscountComponent } from './discount/discount.component';
 import { TopTenSellerComponent } from './top-ten-seller/top-ten-seller.component';
+import { TransactionComponent } from './transaction/transaction.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { TopTenSellerComponent } from './top-ten-seller/top-ten-seller.component
     TopProductComponent,
     TopUserComponent,
     DiscountComponent,
-    TopTenSellerComponent
+    TopTenSellerComponent,
+    TransactionComponent
    
   ],
   imports: [

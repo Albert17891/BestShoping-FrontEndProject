@@ -14,6 +14,7 @@ import { RegisterComponent } from './register/register.component';
 import { TopProductComponent } from './top-product/top-product.component';
 import { TopTenSellerComponent } from './top-ten-seller/top-ten-seller.component';
 import { TopUserComponent } from './top-user/top-user.component';
+import { TransactionComponent } from './transaction/transaction.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { UpdateComponent } from './update/update.component';
 import { UserManagementComponent } from './user-management/user-management.component';
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path:"top-user",component:TopUserComponent},
   {path:"discount",component:DiscountComponent},  
   {path:"top-seller",component:TopTenSellerComponent},
+  {path:"transaction",component:TransactionComponent},
   {path:'',redirectTo:'/login',pathMatch:'full'}
 ];
 
