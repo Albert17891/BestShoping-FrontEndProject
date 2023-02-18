@@ -17,8 +17,8 @@ export class ProductReportComponent {
         this.productReportService.topTen();       
   }
 
-  AveragePrice(){
-
+ getTransaction(){
+      this.productReportService.GetTransaction();
   }
 
   topTenSeller(){
