@@ -141,7 +141,7 @@ export class ProductPageComponent implements OnInit {
       const vaucerRequest:UseVaucerRequest={id:id,userId:userId!,vaucerName:this.vaucerName}
       this.vaucerService.UseVaucer(vaucerRequest)
           .subscribe(response=>{            
-            alert(response.status);
+            alert (`თვენი ვაუჩერის სტატუსი ${response.status} თანხა ${response.price}`);
             location.reload();           
           });         
     }      
