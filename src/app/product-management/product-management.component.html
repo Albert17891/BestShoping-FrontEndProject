@@ -23,6 +23,7 @@
                <td>{{productWithOwner.firstName}}</td>
                <td>{{productWithOwner.email}}</td>  
                <td>
+                <button  (click)="getVaucer(productWithOwner.productId)"  >ვაუჩერები</button>
                
                 <!-- Delete operation -->
                 <button (click)="deleteProduct(productWithOwner.productId)">წაშლა</button>

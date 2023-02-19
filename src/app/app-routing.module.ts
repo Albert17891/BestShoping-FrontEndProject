@@ -18,6 +18,7 @@ import { TransactionComponent } from './transaction/transaction.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { UpdateComponent } from './update/update.component';
 import { UserManagementComponent } from './user-management/user-management.component';
+import { VaucerForProductComponent } from './vaucer-for-product/vaucer-for-product.component';
 import { VaucerComponent } from './vaucer/vaucer.component';
 
 const routes: Routes = [
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path:"discount",component:DiscountComponent},  
   {path:"top-seller",component:TopTenSellerComponent},
   {path:"transaction",component:TransactionComponent},
+  {path:"vaucer-show",component:VaucerForProductComponent},
   {path:'',redirectTo:'/login',pathMatch:'full'}
 ];
 

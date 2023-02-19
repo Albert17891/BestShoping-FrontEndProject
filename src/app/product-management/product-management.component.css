@@ -3,10 +3,11 @@ button{
     background-color: red;
 
     font-size: large;
-    margin: 10px 0;
+    margin: 10px 5px;
     border-radius: 8px;
     border: solid 1px #222;
     color: #FFF;
+ 
 }
 
 #report{

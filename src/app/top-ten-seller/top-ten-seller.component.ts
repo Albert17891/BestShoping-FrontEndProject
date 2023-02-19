@@ -16,6 +16,7 @@ export class TopTenSellerComponent implements OnInit {
 
   ngOnInit() {
     this.topTenSellers= this.reportService.topTenSellers;
+    
   }
 
 

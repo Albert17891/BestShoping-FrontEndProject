@@ -29,7 +29,8 @@ import { TopUserComponent } from './top-user/top-user.component';
 import { DiscountComponent } from './discount/discount.component';
 import { TopTenSellerComponent } from './top-ten-seller/top-ten-seller.component';
 import { TransactionComponent } from './transaction/transaction.component';
-
+import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import { VaucerForProductComponent } from './vaucer-for-product/vaucer-for-product.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,9 @@ import { TransactionComponent } from './transaction/transaction.component';
     TopUserComponent,
     DiscountComponent,
     TopTenSellerComponent,
-    TransactionComponent
+    TransactionComponent,
+    VaucerForProductComponent
+    
    
   ],
   imports: [
@@ -63,7 +66,7 @@ import { TransactionComponent } from './transaction/transaction.component';
     PaginatorModule,
     DropdownModule,
     BrowserAnimationsModule,
-   
+    DynamicDialogModule,
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,useClass:AuthIntercepter,multi:true,
