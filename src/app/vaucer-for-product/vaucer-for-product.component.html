@@ -1,0 +1,18 @@
+<p-table [value]="vaucers" styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '50rem'}">
+   
+    <ng-template pTemplate="header">
+        <tr>
+            <th>მომხმარებლის სახელი</th>
+            <th>მოქმედების ვადა</th>
+            <th>გამოყენებულია</th>           
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-vaucer>
+        <tr>
+            <td>{{vaucer.userName}}</td>
+            <td>{{vaucer.expireTime}}</td>
+            <td>{{vaucer.isUsed}}</td>           
+        </tr>
+    </ng-template>
+   
+</p-table>
