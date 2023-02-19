@@ -7,13 +7,16 @@ import { VaucerModel } from '../interfaces/Vaucer/VaucerModel';
 import { UseVaucerRequest } from '../interfaces/Vaucer/UseVaucerRequest';
 import { VaucerShow } from '../interfaces/Vaucer/VaucerShow';
 import { VaucerUserResponse } from '../interfaces/Vaucer/VaucerUserResponse';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VaucerService {
 
-  constructor(public http:HttpClient) { }
+  vaucers!:VaucerShow[];
+
+  constructor(public http:HttpClient,public route:Router) { }
 
   CreateVaucer(vaucerData:VaucerModel){
         this.http.post("https://localhost:7246/Admin/create-vaucer",vaucerData)
@@ -46,6 +49,17 @@ export class VaucerService {
   UseVaucer(vaucerRequest:UseVaucerRequest):Observable<VaucerUserResponse>{
    
      return this.http.post<VaucerUserResponse>("https://localhost:7246/User/use-vaucer",vaucerRequest);                    
+  }
+
+  getVaucerByProductId(id:number){
+    const params=new HttpParams()
+    .set("id",id);
+
+      return this.http.get<VaucerShow[]>("https://localhost:7246/User/get-vaucer-by-productId",{params})
+                      .subscribe(data=>{
+                           this.vaucers=data;
+                           this.route.navigate(["vaucer-show"])
+                      })
   }
 
 }
